@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { imageWithAlt } from "./_shared";
 
 export const certifiedOrganicSection = defineType({
   name: "certifiedOrganicSection",
@@ -39,11 +40,7 @@ export const certifiedOrganicSection = defineType({
       of: [{
         type: "object",
         fields: [
-          defineField({
-            name: "logo",
-            type: "image",
-            fields: [defineField({ name: "alt", type: "string", validation: (R) => R.required() })],
-          }),
+          imageWithAlt("logo", "Logo"),
           defineField({ name: "name", type: "string", validation: (R) => R.required() }),
           defineField({ name: "description", type: "text" }),
         ],

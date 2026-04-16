@@ -1,13 +1,5 @@
 import { defineField, defineType } from "sanity";
-
-const imageWithAlt = (name: string, title: string) =>
-  defineField({
-    name,
-    title,
-    type: "image",
-    options: { hotspot: true },
-    fields: [defineField({ name: "alt", type: "string", validation: (R) => R.required() })],
-  });
+import { imageWithAlt } from "./_shared";
 
 export const premiumIngredientsSection = defineType({
   name: "premiumIngredientsSection",

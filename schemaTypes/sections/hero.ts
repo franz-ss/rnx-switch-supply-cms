@@ -1,26 +1,5 @@
 import { defineField, defineType } from "sanity";
-
-const ctaField = (name: string, title: string) =>
-  defineField({
-    name,
-    title,
-    type: "object",
-    fields: [
-      defineField({ name: "label", title: "Label", type: "string", validation: (R) => R.required() }),
-      defineField({ name: "href", title: "URL", type: "string", validation: (R) => R.required() }),
-    ],
-  });
-
-const imageWithAlt = (name: string, title: string) =>
-  defineField({
-    name,
-    title,
-    type: "image",
-    options: { hotspot: true },
-    fields: [
-      defineField({ name: "alt", title: "Alt Text", type: "string", validation: (R) => R.required() }),
-    ],
-  });
+import { ctaField, imageWithAlt } from "./_shared";
 
 export const hero = defineType({
   name: "hero",

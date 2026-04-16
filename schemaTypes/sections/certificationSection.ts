@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { imageWithAlt } from "./_shared";
 
 export const certificationSection = defineType({
   name: "certificationSection",
@@ -14,12 +15,7 @@ export const certificationSection = defineType({
         type: "object",
         fields: [
           defineField({ name: "name", title: "Name", type: "string", validation: (R) => R.required() }),
-          defineField({
-            name: "logo",
-            title: "Logo",
-            type: "image",
-            fields: [defineField({ name: "alt", title: "Alt Text", type: "string", validation: (R) => R.required() })],
-          }),
+          imageWithAlt("logo", "Logo"),
         ],
         preview: { select: { title: "name" } },
       }],
