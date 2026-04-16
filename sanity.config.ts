@@ -6,8 +6,8 @@ import { schemaTypes } from "./schemaTypes";
 export default defineConfig({
   name: "switch-supply",
   title: "Switch Supply",
-  projectId: "kknhy9ol",
-  dataset: "production",
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
+  dataset: process.env.SANITY_STUDIO_DATASET!,
   plugins: [
     structureTool({
       structure: (S) =>

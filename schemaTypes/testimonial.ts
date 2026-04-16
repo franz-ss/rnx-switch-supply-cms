@@ -39,7 +39,7 @@ export const testimonial = defineType({
       name: "order",
       title: "Display Order",
       type: "number",
-      initialValue: 0,
+      description: "Lower numbers appear first. Use 1, 2, 3… — gaps are fine.",
     }),
   ],
   orderings: [
@@ -49,4 +49,7 @@ export const testimonial = defineType({
       by: [{ field: "order", direction: "asc" }],
     },
   ],
+  preview: {
+    select: { title: "name", subtitle: "company" },
+  },
 });
