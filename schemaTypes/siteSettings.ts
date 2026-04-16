@@ -1,0 +1,74 @@
+import { defineField, defineType } from "sanity";
+
+const navLinkType = {
+  type: "object" as const,
+  fields: [
+    defineField({
+      name: "label",
+      type: "string",
+      title: "Label",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "href",
+      type: "string",
+      title: "URL",
+      validation: (Rule) => Rule.required(),
+    }),
+  ],
+  preview: { select: { title: "label", subtitle: "href" } },
+};
+
+export const siteSettings = defineType({
+  name: "siteSettings",
+  title: "Site Settings",
+  type: "document",
+  __experimental_actions: ["update", "publish"],
+  fields: [
+    defineField({
+      name: "siteName",
+      title: "Site Name",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({ name: "tagline", title: "Tagline", type: "string" }),
+    defineField({ name: "phone", title: "Phone", type: "string" }),
+    defineField({
+      name: "phoneHref",
+      title: "Phone Href",
+      type: "string",
+      description: "e.g. tel:+611300844351",
+    }),
+    defineField({ name: "email", title: "Contact Email", type: "string" }),
+    defineField({
+      name: "emailHref",
+      title: "Email Href",
+      type: "string",
+      description: "e.g. mailto:contact@switchsupply.com",
+    }),
+    defineField({
+      name: "siteDescription",
+      title: "Site Description",
+      type: "text",
+      description: "Used in the footer",
+    }),
+    defineField({
+      name: "navLinks",
+      title: "Navigation Links",
+      type: "array",
+      of: [navLinkType],
+    }),
+    defineField({
+      name: "productLinks",
+      title: "Footer: Product Links",
+      type: "array",
+      of: [navLinkType],
+    }),
+    defineField({
+      name: "companyLinks",
+      title: "Footer: Company Links",
+      type: "array",
+      of: [navLinkType],
+    }),
+  ],
+});
