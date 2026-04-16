@@ -1,3 +1,4 @@
 import { testimonial } from "./testimonial";
 import { ingredientCategory } from "./ingredientCategory";
-export const schemaTypes = [testimonial, ingredientCategory];
+import { siteSettings } from "./siteSettings";
+export const schemaTypes = [testimonial, ingredientCategory, siteSettings];
