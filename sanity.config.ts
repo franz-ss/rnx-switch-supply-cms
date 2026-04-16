@@ -1,0 +1,35 @@
+import { defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
+import { visionTool } from "@sanity/vision";
+import { schemaTypes } from "./schemaTypes";
+
+export default defineConfig({
+  name: "switch-supply",
+  title: "Switch Supply",
+  projectId: "kknhy9ol",
+  dataset: "production",
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title("Content")
+          .items([
+            S.listItem()
+              .title("Site Settings")
+              .id("siteSettings")
+              .child(
+                S.document()
+                  .schemaType("siteSettings")
+                  .documentId("siteSettings")
+              ),
+            S.divider(),
+            S.documentTypeListItem("ingredientCategory").title(
+              "Ingredient Categories"
+            ),
+            S.documentTypeListItem("testimonial").title("Testimonials"),
+          ]),
+    }),
+    visionTool(),
+  ],
+  schema: { types: schemaTypes },
+});
