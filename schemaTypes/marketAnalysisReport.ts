@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { imageWithAlt } from "./sections/_shared";
 
 export const marketAnalysisReport = defineType({
   name: "marketAnalysisReport",
@@ -23,6 +24,7 @@ export const marketAnalysisReport = defineType({
           of: [
             {
               type: "object",
+              preview: { select: { title: "label" } },
               fields: [
                 defineField({ name: "icon", title: "Icon", type: "string" }),
                 defineField({ name: "label", title: "Label", type: "string" }),
@@ -48,6 +50,7 @@ export const marketAnalysisReport = defineType({
           of: [
             {
               type: "object",
+              preview: { select: { title: "heading" } },
               fields: [
                 defineField({ name: "emoji", title: "Emoji", type: "string" }),
                 defineField({ name: "heading", title: "Heading", type: "string" }),
@@ -68,6 +71,7 @@ export const marketAnalysisReport = defineType({
           of: [
             {
               type: "object",
+              preview: { select: { title: "bold" } },
               fields: [
                 defineField({ name: "bold", title: "Bold Text", type: "string" }),
                 defineField({
@@ -121,19 +125,7 @@ export const marketAnalysisReport = defineType({
                       type: "object",
                       preview: { select: { title: "title" } },
                       fields: [
-                        defineField({
-                          name: "image",
-                          title: "Image",
-                          type: "image",
-                          options: { hotspot: true },
-                          fields: [
-                            defineField({
-                              name: "alt",
-                              title: "Alt Text",
-                              type: "string",
-                            }),
-                          ],
-                        }),
+                        imageWithAlt("image", "Image"),
                         defineField({
                           name: "badgeText",
                           title: "Badge Text",
@@ -163,6 +155,7 @@ export const marketAnalysisReport = defineType({
                           of: [
                             {
                               type: "object",
+                              preview: { select: { title: "entries.0.label" } },
                               fields: [
                                 defineField({
                                   name: "entries",
@@ -247,15 +240,7 @@ export const marketAnalysisReport = defineType({
         defineField({ name: "ctaLabel", title: "CTA Label", type: "string" }),
         defineField({ name: "ctaHref", title: "CTA Href", type: "string" }),
         defineField({ name: "disclaimer", title: "Disclaimer", type: "text" }),
-        defineField({
-          name: "image",
-          title: "Image",
-          type: "image",
-          options: { hotspot: true },
-          fields: [
-            defineField({ name: "alt", title: "Alt Text", type: "string" }),
-          ],
-        }),
+        imageWithAlt("image", "Image"),
       ],
     }),
 
@@ -277,15 +262,7 @@ export const marketAnalysisReport = defineType({
         defineField({ name: "tagline", title: "Tagline", type: "string" }),
         defineField({ name: "ctaLabel", title: "CTA Label", type: "string" }),
         defineField({ name: "ctaHref", title: "CTA Href", type: "string" }),
-        defineField({
-          name: "image",
-          title: "Image",
-          type: "image",
-          options: { hotspot: true },
-          fields: [
-            defineField({ name: "alt", title: "Alt Text", type: "string" }),
-          ],
-        }),
+        imageWithAlt("image", "Image"),
       ],
     }),
   ],
