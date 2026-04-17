@@ -22,6 +22,14 @@ export default defineConfig({
                   .schemaType("homePage")
                   .documentId("homePage")
               ),
+            S.listItem()
+              .title("Market Analysis Report")
+              .id("marketAnalysisReport")
+              .child(
+                S.document()
+                  .schemaType("marketAnalysisReport")
+                  .documentId("marketAnalysisReport")
+              ),
             S.divider(),
             S.listItem()
               .title("Site Settings")

@@ -2,6 +2,7 @@ import { testimonial } from "./testimonial";
 import { ingredientCategory } from "./ingredientCategory";
 import { siteSettings } from "./siteSettings";
 import { homePage } from "./homePage";
+import { marketAnalysisReport } from "./marketAnalysisReport";
 import { hero } from "./sections/hero";
 import { marketReportBanner } from "./sections/marketReportBanner";
 import { certificationSection } from "./sections/certificationSection";
@@ -21,6 +22,7 @@ export const schemaTypes = [
   ingredientCategory,
   siteSettings,
   homePage,
+  marketAnalysisReport,
   // Section object types
   hero,
   marketReportBanner,
