@@ -4,10 +4,10 @@
 import { projectId, dataset } from "./seed/client.js";
 import { seedCategories } from "./seed/categories.js";
 import { seedTestimonials } from "./seed/testimonials.js";
-import { seedSiteSettings } from "./seed/site-settings.js";
-import { seedHomePage } from "./seed/home-page.js";
-import { seedMarketAnalysisReport } from "./seed/market-analysis-report.js";
-import { seedCertifiedOrganicPage } from "./seed/certified-organic-page.js";
+import { seedSiteSettings } from "./seed/siteSettings.js";
+import { seedHomePage } from "./seed/homePage.js";
+import { seedMarketAnalysisReport } from "./seed/marketAnalysisReport.js";
+import { seedCertifiedOrganicPage } from "./seed/certifiedOrganicPage.js";
 
 async function main(): Promise<void> {
   if (!process.env.SANITY_API_TOKEN) {

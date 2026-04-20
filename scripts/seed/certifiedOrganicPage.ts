@@ -1,4 +1,4 @@
-// scripts/seed/certified-organic-page.ts
+// scripts/seed/certifiedOrganicPage.ts
 import { client, uploadImage } from "./client.js";
 
 const icon = (name: string) => ({ _type: "iconPicker", provider: "fi", name });
@@ -10,6 +10,7 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
     acoLogo, usdaLogo, euLogo, haccpLogo, halalLogo,
     backgroundImage,
     herbsImage, extractsImage, sweetenersImage, juicesImage,
+    plShowcase, plSachet, plTin,
   ] = await Promise.all([
     uploadImage("images/logos/aco-logo.png", "Australian Certified Organic"),
     uploadImage("images/logos/usda-organic-logo.png", "USDA NOP Organic"),
@@ -21,6 +22,9 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
     uploadImage("images/categories/extract-powders.jpg", "Extract Powders & Superfoods"),
     uploadImage("images/categories/sweeteners.jpg", "Sweeteners"),
     uploadImage("images/categories/juices-puree.jpg", "Juices & Puree"),
+    uploadImage("images/private-label/private-label-products.jpg", "Private label product range"),
+    uploadImage("images/private-label/sachet-packaging.jpg", "Sachet packaging options"),
+    uploadImage("images/private-label/daily-greens-tin.jpg", "Premium tin packaging"),
   ]);
 
   function img(ref: typeof acoLogo) {
@@ -54,6 +58,7 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
 
     productRange: {
       heading: "Our Certified Organic Range",
+      catalogueCta: { label: "Download Catalogue", href: "/contact" },
       categories: [
         {
           _key: "cat-0",
@@ -122,6 +127,7 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
           ],
         },
       ],
+      qualityCommitmentsHeading: "Our Organic Quality Commitment",
       qualityCommitments: [
         { _key: "qc-0", icon: icon("FiCheckCircle"), title: "Triple Certified", description: "ACO, USDA NOP, EU Organic" },
         { _key: "qc-1", icon: icon("FiBox"), title: "Direct Sourcing", description: "384 certified farms" },
@@ -132,6 +138,36 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
 
     functionalShowcase: {
       heading: "Top Functional & Wellness Ingredients",
+      subheading:
+        "Our premium collection of functional ingredients powering the wellness revolution. From grass-fed collagen to adaptogenic mushrooms, these are the ingredients driving innovation in sports nutrition, beauty-from-within, and everyday wellness.",
+      privateLabelCard: {
+        heading: "Private Label Services",
+        description:
+          "Launch your own brand with our comprehensive private label solutions. From formulation to packaging, we handle everything so you can focus on marketing and sales.",
+      },
+      customBlendCard: {
+        heading: "Custom Blend Development",
+        description:
+          "Create unique proprietary blends tailored to your brand's needs. Our R&D team collaborates with you to develop custom formulations that stand out in the market.",
+        benefits: [
+          "Expert R&D Formulation Team",
+          "Proprietary Blend Protection",
+          "Scalable Production Capabilities",
+        ],
+      },
+      trendingLabel: "Trending Organic Functional Ingredients",
+      premiumRangeLabel: "Premium Ingredient Range",
+      cta: {
+        heading: "Start Your Private Label Project Today",
+        description:
+          "From concept to retail-ready products, we provide complete private label solutions with certified organic ingredients. Launch your wellness brand with expert formulation, packaging, and regulatory support.",
+        button: { label: "Start Private Label Project", href: "/contact" },
+      },
+      privateLabelImages: [
+        ...(plShowcase ? [{ _key: "pl-0", label: "Product Range", image: plShowcase }] : []),
+        ...(plSachet ? [{ _key: "pl-1", label: "Sachet Packaging", image: plSachet }] : []),
+        ...(plTin ? [{ _key: "pl-2", label: "Premium Tins", image: plTin }] : []),
+      ],
       products: [
         { _key: "p-0", name: "Premium Grass-Fed Collagen Peptides", category: "Protein & Beauty", trending: true },
         { _key: "p-1", name: "Organic Ginger Powder (Premium Grade)", category: "Digestive Wellness", trending: true },
@@ -164,6 +200,7 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
         { _key: "m-0", value: "23", label: "Import Countries", description: "Sourcing premium organic ingredients from certified farms across Asia, Americas, Europe, Africa, and Middle East" },
         { _key: "m-1", value: "384", label: "Certified Farms", description: "Direct relationships with organic farmers globally, ensuring quality, consistency, and fair trade practices" },
       ],
+      sourcingNetworkHeading: "Global Organic Ingredient Sourcing Network",
       countries: [
         { _key: "c-0", country: "India", region: "Asia", flag: "🇮🇳" },
         { _key: "c-1", country: "Indonesia", region: "Asia", flag: "🇮🇩" },
@@ -189,6 +226,8 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
         { _key: "c-21", country: "Pakistan", region: "Asia", flag: "🇵🇰" },
         { _key: "c-22", country: "Guatemala", region: "Americas", flag: "🇬🇹" },
       ],
+      partnershipHeading: "Direct Farm Partnerships",
+      partnershipDescription: "We maintain direct relationships with certified organic farms across these countries, ensuring consistent quality, fair pricing, and sustainable farming practices. Every farm is audited and certified to ACO, USDA NOP, or EU Organic standards.",
     },
 
     trustSection: {
@@ -257,8 +296,7 @@ export async function seedCertifiedOrganicPage(): Promise<void> {
         "Complete chain of custody documentation",
         "Dedicated technical support team",
       ],
-      ctaLabel: "Request a Quote",
-      ctaHref: "/contact",
+      cta: { label: "Request a Quote", href: "/contact" },
     },
   };
 

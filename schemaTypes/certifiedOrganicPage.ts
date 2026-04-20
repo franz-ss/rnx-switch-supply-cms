@@ -35,7 +35,16 @@ export const certifiedOrganicPage = defineType({
         type: "object",
         preview: { select: { title: "name" } },
         fields: [
-          imageWithAlt("logo", "Logo"),
+          defineField({
+            name: "logo",
+            title: "Logo",
+            type: "image",
+            options: { hotspot: true },
+            validation: (R) => R.required(),
+            fields: [
+              defineField({ name: "alt", title: "Alt Text", type: "string", validation: (R) => R.required() }),
+            ],
+          }),
           defineField({ name: "name", title: "Name", type: "string", validation: (R) => R.required() }),
         ],
       }],
@@ -48,6 +57,15 @@ export const certifiedOrganicPage = defineType({
       type: "object",
       fields: [
         defineField({ name: "heading", title: "Heading", type: "string" }),
+        defineField({
+          name: "catalogueCta",
+          title: "Catalogue CTA Button",
+          type: "object",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string" }),
+            defineField({ name: "href", title: "URL", type: "string" }),
+          ],
+        }),
         defineField({
           name: "categories",
           title: "Product Categories",
@@ -63,6 +81,7 @@ export const certifiedOrganicPage = defineType({
             ],
           }],
         }),
+        defineField({ name: "qualityCommitmentsHeading", title: "Quality Commitments Heading", type: "string" }),
         defineField({
           name: "qualityCommitments",
           title: "Quality Commitments",
@@ -87,6 +106,46 @@ export const certifiedOrganicPage = defineType({
       type: "object",
       fields: [
         defineField({ name: "heading", title: "Heading", type: "string" }),
+        defineField({ name: "subheading", title: "Subheading", type: "text" }),
+        defineField({
+          name: "privateLabelCard",
+          title: "Private Label Card",
+          type: "object",
+          fields: [
+            defineField({ name: "heading", title: "Heading", type: "string" }),
+            defineField({ name: "description", title: "Description", type: "text" }),
+          ],
+        }),
+        defineField({
+          name: "customBlendCard",
+          title: "Custom Blend Card",
+          type: "object",
+          fields: [
+            defineField({ name: "heading", title: "Heading", type: "string" }),
+            defineField({ name: "description", title: "Description", type: "text" }),
+            defineField({ name: "benefits", title: "Benefits", type: "array", of: [{ type: "string" }] }),
+          ],
+        }),
+        defineField({ name: "trendingLabel", title: "Trending Section Label", type: "string" }),
+        defineField({ name: "premiumRangeLabel", title: "Premium Range Section Label", type: "string" }),
+        defineField({
+          name: "cta",
+          title: "Bottom CTA",
+          type: "object",
+          fields: [
+            defineField({ name: "heading", title: "Heading", type: "string" }),
+            defineField({ name: "description", title: "Description", type: "text" }),
+            defineField({
+              name: "button",
+              title: "Button",
+              type: "object",
+              fields: [
+                defineField({ name: "label", title: "Label", type: "string" }),
+                defineField({ name: "href", title: "URL", type: "string" }),
+              ],
+            }),
+          ],
+        }),
         defineField({
           name: "products",
           title: "Products",
@@ -98,6 +157,19 @@ export const certifiedOrganicPage = defineType({
               defineField({ name: "name", title: "Name", type: "string", validation: (R) => R.required() }),
               defineField({ name: "category", title: "Category", type: "string" }),
               defineField({ name: "trending", title: "Trending", type: "boolean" }),
+            ],
+          }],
+        }),
+        defineField({
+          name: "privateLabelImages",
+          title: "Private Label Images",
+          type: "array",
+          of: [{
+            type: "object",
+            preview: { select: { title: "label" } },
+            fields: [
+              imageWithAlt("image", "Image"),
+              defineField({ name: "label", title: "Label", type: "string", validation: (R) => R.required() }),
             ],
           }],
         }),
@@ -126,6 +198,7 @@ export const certifiedOrganicPage = defineType({
             ],
           }],
         }),
+        defineField({ name: "sourcingNetworkHeading", title: "Sourcing Network Heading", type: "string" }),
         defineField({
           name: "countries",
           title: "Import Countries",
@@ -140,6 +213,8 @@ export const certifiedOrganicPage = defineType({
             ],
           }],
         }),
+        defineField({ name: "partnershipHeading", title: "Partnership Heading", type: "string" }),
+        defineField({ name: "partnershipDescription", title: "Partnership Description", type: "text" }),
       ],
     }),
 
