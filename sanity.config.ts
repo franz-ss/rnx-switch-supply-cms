@@ -1,7 +1,7 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {presentationTool} from 'sanity/presentation'
+import {presentationTool, defineLocations} from 'sanity/presentation'
 import {iconPicker} from 'sanity-plugin-icon-picker'
 
 import {schemaTypes} from './schemaTypes'
@@ -53,6 +53,47 @@ export default defineConfig({
         origin: process.env.SANITY_STUDIO_PREVIEW_URL ?? 'http://localhost:3000',
         previewMode: {
           enable: `/api/draft-mode/enable?secret=${process.env.SANITY_STUDIO_PREVIEW_SECRET}`,
+        },
+      },
+      resolve: {
+        locations: {
+          homePage: defineLocations({
+            select: {title: 'title'},
+            resolve: () => ({locations: [{title: 'Home', href: '/'}]}),
+          }),
+          certifiedOrganicPage: defineLocations({
+            select: {title: 'title'},
+            resolve: () => ({
+              locations: [{title: 'Certified Organic', href: '/ingredients/certified-organic'}],
+            }),
+          }),
+          marketAnalysisReport: defineLocations({
+            select: {title: 'title'},
+            resolve: () => ({
+              locations: [{title: 'Market Analysis Report', href: '/market-analysis-report'}],
+            }),
+          }),
+          siteSettings: defineLocations({
+            select: {title: 'title'},
+            resolve: () => ({
+              locations: [
+                {title: 'Home', href: '/'},
+                {title: 'Certified Organic', href: '/ingredients/certified-organic'},
+                {title: 'Market Analysis Report', href: '/market-analysis-report'},
+              ],
+            }),
+          }),
+          ingredientCategory: defineLocations({
+            select: {title: 'title', slug: 'slug.current'},
+            resolve: (doc) => ({
+              locations: [
+                {
+                  title: doc?.title ?? 'Ingredient Category',
+                  href: `/ingredients/${doc?.slug}`,
+                },
+              ],
+            }),
+          }),
         },
       },
     }),
