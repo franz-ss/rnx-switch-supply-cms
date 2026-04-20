@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { CogIcon } from "@sanity/icons";
 
 const navLinkType = {
   type: "object" as const,
@@ -21,6 +22,7 @@ const navLinkType = {
 
 export const siteSettings = defineType({
   name: "siteSettings",
+  icon: CogIcon,
   title: "Site Settings",
   type: "document",
   fields: [

@@ -2,6 +2,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { iconPicker } from "sanity-plugin-icon-picker";
+
 import { schemaTypes } from "./schemaTypes";
 
 export default defineConfig({
@@ -19,6 +20,7 @@ export default defineConfig({
             S.listItem()
               .title("Home Page")
               .id("homePage")
+              .schemaType("homePage")
               .child(
                 S.document()
                   .schemaType("homePage")
@@ -27,6 +29,7 @@ export default defineConfig({
             S.listItem()
               .title("Market Analysis Report")
               .id("marketAnalysisReport")
+              .schemaType("marketAnalysisReport")
               .child(
                 S.document()
                   .schemaType("marketAnalysisReport")
@@ -36,6 +39,7 @@ export default defineConfig({
             S.listItem()
               .title("Site Settings")
               .id("siteSettings")
+              .schemaType("siteSettings")
               .child(
                 S.document()
                   .schemaType("siteSettings")

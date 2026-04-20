@@ -1,7 +1,9 @@
+import { TagIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const ingredientCategory = defineType({
   name: "ingredientCategory",
+  icon: TagIcon,
   title: "Ingredient Category",
   type: "document",
   fields: [

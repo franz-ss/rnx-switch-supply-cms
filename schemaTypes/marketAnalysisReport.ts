@@ -1,8 +1,10 @@
 import { defineField, defineType } from "sanity";
+import { TrendUpwardIcon } from "@sanity/icons";
 import { imageWithAlt } from "./sections/_shared";
 
 export const marketAnalysisReport = defineType({
   name: "marketAnalysisReport",
+  icon: TrendUpwardIcon,
   title: "Market Analysis Report",
   type: "document",
   fields: [
