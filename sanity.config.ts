@@ -1,6 +1,7 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import {presentationTool} from '@sanity/presentation'
 import {iconPicker} from 'sanity-plugin-icon-picker'
 
 import {schemaTypes} from './schemaTypes'
@@ -46,6 +47,14 @@ export default defineConfig({
             S.documentTypeListItem('ingredientCategory').title('Ingredient Categories'),
             S.documentTypeListItem('testimonial').title('Testimonials'),
           ]),
+    }),
+    presentationTool({
+      previewUrl: {
+        origin: process.env.SANITY_STUDIO_PREVIEW_URL ?? 'http://localhost:3000',
+        previewMode: {
+          enable: `/api/draft-mode/enable?secret=${process.env.SANITY_STUDIO_PREVIEW_SECRET}`,
+        },
+      },
     }),
     visionTool(),
   ],
