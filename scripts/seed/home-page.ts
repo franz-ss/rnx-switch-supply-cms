@@ -419,6 +419,8 @@ export async function seedHomePage(): Promise<void> {
     {
       _type: "testimonialsSection",
       _key: "section-testimonials",
+      heading: "Trusted by Health Brands Worldwide",
+      subheading: "See what our partners have to say about working with Switch Supply",
       testimonials: [
         { _type: "reference", _ref: "testimonial-1", _key: "tref-1" },
         { _type: "reference", _ref: "testimonial-2", _key: "tref-2" },
