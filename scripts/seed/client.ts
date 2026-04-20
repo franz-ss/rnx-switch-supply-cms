@@ -27,8 +27,7 @@ export async function uploadImage(
   relativePath: string,
   alt: string,
 ): Promise<SanityImageReference | undefined> {
-  // __dirname is scripts/seed/ — resolve two levels up to reach /public
-  const imagePath = path.resolve(__dirname, "../../public", relativePath);
+  const imagePath = path.resolve(__dirname, "../images", relativePath);
 
   if (!fs.existsSync(imagePath)) {
     console.warn(`  [WARN] Image not found, skipping upload: ${imagePath}`);
