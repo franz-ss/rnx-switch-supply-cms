@@ -7,6 +7,7 @@ import { seedTestimonials } from "./seed/testimonials.js";
 import { seedSiteSettings } from "./seed/site-settings.js";
 import { seedHomePage } from "./seed/home-page.js";
 import { seedMarketAnalysisReport } from "./seed/market-analysis-report.js";
+import { seedCertifiedOrganicPage } from "./seed/certified-organic-page.js";
 
 async function main(): Promise<void> {
   if (!process.env.SANITY_API_TOKEN) {
@@ -24,6 +25,7 @@ async function main(): Promise<void> {
   await seedSiteSettings();
   await seedHomePage();
   await seedMarketAnalysisReport();
+  await seedCertifiedOrganicPage();
 
   console.log("\nDone.");
 }

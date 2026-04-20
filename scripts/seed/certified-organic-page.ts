@@ -1,0 +1,267 @@
+// scripts/seed/certified-organic-page.ts
+import { client, uploadImage } from "./client.js";
+
+const icon = (name: string) => ({ _type: "iconPicker", provider: "fi", name });
+
+export async function seedCertifiedOrganicPage(): Promise<void> {
+  console.log("\nSeeding certified organic page...");
+
+  const [
+    acoLogo, usdaLogo, euLogo, haccpLogo, halalLogo,
+    backgroundImage,
+    herbsImage, extractsImage, sweetenersImage, juicesImage,
+  ] = await Promise.all([
+    uploadImage("images/logos/aco-logo.png", "Australian Certified Organic"),
+    uploadImage("images/logos/usda-organic-logo.png", "USDA NOP Organic"),
+    uploadImage("images/logos/eu-organic-logo.png", "EU Organic"),
+    uploadImage("images/logos/haccp-logo.png", "HACCP Certified"),
+    uploadImage("images/logos/halal-logo.png", "Halal Certified"),
+    uploadImage("images/categories/certified-organic-hero.jpg", "Certified organic herb harvest"),
+    uploadImage("images/categories/herbs-spices-botanicals.jpg", "Herbs, Spices & Botanicals"),
+    uploadImage("images/categories/extract-powders.jpg", "Extract Powders & Superfoods"),
+    uploadImage("images/categories/sweeteners.jpg", "Sweeteners"),
+    uploadImage("images/categories/juices-puree.jpg", "Juices & Puree"),
+  ]);
+
+  function img(ref: typeof acoLogo) {
+    return ref ? { image: ref } : {};
+  }
+
+  const doc = {
+    _id: "certifiedOrganicPage",
+    _type: "certifiedOrganicPage",
+    title: "Certified Organic Page",
+    seoTitle: "Certified Organic Ingredients | Switch Supply",
+    seoDescription:
+      "Australia's largest range of ACO, USDA NOP and EU certified organic ingredients. Sourced from 384 certified farms across 23 countries with complete traceability.",
+
+    hero: {
+      heading: "Australia's Premier Organic Ingredient Supplier",
+      subheading:
+        "Sourcing from 384 certified organic farms worldwide, supplying to 9 export markets. Australia's largest range of ACO, USDA NOP, and EU certified organic ingredients with complete traceability.",
+      ctaLabel: "Download Catalogue",
+      ctaHref: "/contact",
+      ...(backgroundImage ? { backgroundImage } : {}),
+    },
+
+    certifications: [
+      { _key: "cert-0", name: "Australian Certified Organic", ...(acoLogo ? { logo: acoLogo } : {}) },
+      { _key: "cert-1", name: "USDA NOP Organic", ...(usdaLogo ? { logo: usdaLogo } : {}) },
+      { _key: "cert-2", name: "EU Organic", ...(euLogo ? { logo: euLogo } : {}) },
+      { _key: "cert-3", name: "HACCP Certified", ...(haccpLogo ? { logo: haccpLogo } : {}) },
+      { _key: "cert-4", name: "Halal Certified", ...(halalLogo ? { logo: halalLogo } : {}) },
+    ],
+
+    productRange: {
+      heading: "Our Certified Organic Range",
+      categories: [
+        {
+          _key: "cat-0",
+          title: "Herbs, Spices & Botanicals",
+          description: "Premium certified organic herbs, spices, and botanical ingredients for functional foods and wellness applications.",
+          ...img(herbsImage),
+          products: [
+            "Alfalfa Leaf", "Ashwagandha Root", "Astragalus Root", "Barley Grass", "Basil",
+            "Bay Leaves", "Black Pepper", "Cardamom", "Cayenne Pepper", "Chamomile Flowers",
+            "Chili Flakes", "Cinnamon", "Cloves", "Coriander", "Cumin", "Curry Leaf",
+            "Dandelion Root", "Fennel Seeds", "Fenugreek", "Garlic", "Ginger", "Ginkgo Biloba",
+            "Ginseng Root", "Green Tea", "Hibiscus Flowers", "Holy Basil (Tulsi)", "Lavender",
+            "Lemon Balm", "Lemongrass", "Licorice Root", "Marshmallow Root", "Milk Thistle",
+            "Mint", "Moringa Leaf", "Mustard Seeds", "Nettle Leaf", "Nutmeg", "Oregano",
+            "Paprika", "Parsley", "Peppermint", "Rosehip", "Rosemary", "Saffron", "Sage",
+            "Schisandra Berry", "Spearmint", "Thyme", "Turmeric", "Valerian Root",
+          ],
+        },
+        {
+          _key: "cat-1",
+          title: "Extract Powders & Superfoods",
+          description: "High-quality certified organic superfood powders and botanical extracts for functional food and supplement applications.",
+          ...img(extractsImage),
+          products: [
+            "Acai", "Acai Berry Powder", "Acerola Cherry Powder", "Alfalfa Powder",
+            "Ashwagandha", "Ashwagandha Extract", "Astragalus Extract", "Barley Grass Powder",
+            "Beetroot", "Beetroot Powder", "Broccoli Powder", "Cacao Powder", "Camu Camu Powder",
+            "Carob Powder", "Chlorella", "Chlorella Powder", "Cinnamon Extract", "Cranberry Powder",
+            "Collagen", "Cordyceps", "Curcumin Extract", "Electrolyte Blends", "Ginger Extract",
+            "Ginkgo Extract", "Ginseng Extract", "Goji Berry Powder", "Grape Seed Extract",
+            "Greens Blends", "Green Coffee Bean Extract", "Green Tea Extract", "Guarana Powder",
+            "Inulin", "Kale Powder", "Lion's Mane", "Lucuma Powder", "Maca", "Maca Root Powder",
+            "Maqui Berry Powder", "Matcha", "Matcha Powder", "Mesquite Powder", "Moringa",
+            "Moringa Powder", "Mucuna Pruriens Extract", "Pea Protein", "Pomegranate Powder",
+            "Psyllium", "Pumpkin Seed Protein", "Reishi", "Reishi Mushroom Extract",
+            "Rhodiola Extract", "Spirulina", "Spirulina Powder", "Turmeric Extract",
+            "Wheatgrass Powder",
+          ],
+        },
+        {
+          _key: "cat-2",
+          title: "Sweeteners",
+          description: "Clean label natural and low-GI sweetening systems for food manufacturers seeking premium sugar alternatives.",
+          ...img(sweetenersImage),
+          products: [
+            "Agave Syrup Powder", "Coconut Sugar", "Date Sugar", "Erythritol",
+            "Inulin (Sweetener)", "Lucuma Powder", "Maple Sugar", "Maple Syrup Powder",
+            "Monk Fruit Extract", "Panela Sugar", "Raw Cane Sugar", "Stevia Extract",
+            "Stevia Leaf Powder", "Xylitol (Birch)",
+          ],
+        },
+        {
+          _key: "cat-3",
+          title: "Juices & Purees",
+          description: "Concentrated fruit juices and purees for beverage manufacturing. NFC, single-strength and concentrated formats.",
+          ...img(juicesImage),
+          products: [
+            "Apple Juice Concentrate", "Acerola Juice Concentrate", "Beetroot Juice Concentrate",
+            "Berry Juice Blends", "Blueberry Juice Concentrate", "Cherry Juice Concentrate",
+            "Elderberry Juice Concentrate", "Ginger Juice", "Grape Juice Concentrate",
+            "Guava Puree", "Lemon Juice Concentrate", "Lime Juice Concentrate", "Mango Puree",
+            "Orange Juice Concentrate", "Passion Fruit Puree", "Peach Puree",
+            "Pear Juice Concentrate", "Pineapple Juice Concentrate",
+            "Pomegranate Juice Concentrate", "Pumpkin Puree", "Raspberry Puree",
+            "Strawberry Puree", "Tomato Puree", "Watermelon Juice",
+          ],
+        },
+      ],
+      qualityCommitments: [
+        { _key: "qc-0", icon: icon("FiCheckCircle"), title: "Triple Certified", description: "ACO, USDA NOP, EU Organic" },
+        { _key: "qc-1", icon: icon("FiBox"), title: "Direct Sourcing", description: "384 certified farms" },
+        { _key: "qc-2", icon: icon("FiAward"), title: "Quality Tested", description: "Every batch tested" },
+        { _key: "qc-3", icon: icon("FiFeather"), title: "Full Traceability", description: "Farm to facility" },
+      ],
+    },
+
+    functionalShowcase: {
+      heading: "Top Functional & Wellness Ingredients",
+      products: [
+        { _key: "p-0", name: "Premium Grass-Fed Collagen Peptides", category: "Protein & Beauty", trending: true },
+        { _key: "p-1", name: "Organic Ginger Powder (Premium Grade)", category: "Digestive Wellness", trending: true },
+        { _key: "p-2", name: "Premium Greens Powder Blend", category: "Superfood Blends", trending: true },
+        { _key: "p-3", name: "Electrolyte Hydration Blend", category: "Sports Nutrition", trending: true },
+        { _key: "p-4", name: "Coconut Water Powder", category: "Hydration & Recovery", trending: true },
+        { _key: "p-5", name: "Marine Collagen (Wild-Caught)", category: "Protein & Beauty", trending: false },
+        { _key: "p-6", name: "Bovine Collagen Peptides", category: "Protein & Beauty", trending: false },
+        { _key: "p-7", name: "Organic Turmeric Curcumin Extract (95%)", category: "Anti-Inflammatory", trending: true },
+        { _key: "p-8", name: "Lion's Mane Mushroom Extract", category: "Cognitive Health", trending: true },
+        { _key: "p-9", name: "Ashwagandha KSM-66®", category: "Stress & Adaptogen", trending: true },
+        { _key: "p-10", name: "Rhodiola Rosea Extract", category: "Stress & Adaptogen", trending: false },
+        { _key: "p-11", name: "MCT Oil Powder", category: "Energy & Keto", trending: true },
+        { _key: "p-12", name: "Organic Matcha Powder (Ceremonial)", category: "Energy & Focus", trending: true },
+        { _key: "p-13", name: "Organic Spirulina Powder", category: "Superfood Blends", trending: false },
+        { _key: "p-14", name: "Reishi Mushroom Extract", category: "Immune Support", trending: false },
+        { _key: "p-15", name: "Organic Maca Root Powder", category: "Energy & Vitality", trending: false },
+        { _key: "p-16", name: "Organic Cacao Powder (Raw)", category: "Superfood Blends", trending: true },
+        { _key: "p-17", name: "Hyaluronic Acid Powder", category: "Beauty & Skin", trending: true },
+        { _key: "p-18", name: "Vitamin C (Ascorbic Acid)", category: "Immune Support", trending: false },
+        { _key: "p-19", name: "Zinc Bisglycinate", category: "Minerals", trending: false },
+      ],
+    },
+
+    supplyChain: {
+      heading: "Global Supply Chain Excellence",
+      description:
+        "A truly global operation: sourcing certified organic ingredients from 23 import countries across 384 certified farms globally, ensuring diversity, quality, and sustainable farming practices.",
+      metrics: [
+        { _key: "m-0", value: "23", label: "Import Countries", description: "Sourcing premium organic ingredients from certified farms across Asia, Americas, Europe, Africa, and Middle East" },
+        { _key: "m-1", value: "384", label: "Certified Farms", description: "Direct relationships with organic farmers globally, ensuring quality, consistency, and fair trade practices" },
+      ],
+      countries: [
+        { _key: "c-0", country: "India", region: "Asia", flag: "🇮🇳" },
+        { _key: "c-1", country: "Indonesia", region: "Asia", flag: "🇮🇩" },
+        { _key: "c-2", country: "Sri Lanka", region: "Asia", flag: "🇱🇰" },
+        { _key: "c-3", country: "Vietnam", region: "Asia", flag: "🇻🇳" },
+        { _key: "c-4", country: "Thailand", region: "Asia", flag: "🇹🇭" },
+        { _key: "c-5", country: "Peru", region: "Americas", flag: "🇵🇪" },
+        { _key: "c-6", country: "Brazil", region: "Americas", flag: "🇧🇷" },
+        { _key: "c-7", country: "Mexico", region: "Americas", flag: "🇲🇽" },
+        { _key: "c-8", country: "Turkey", region: "Middle East", flag: "🇹🇷" },
+        { _key: "c-9", country: "Egypt", region: "Africa", flag: "🇪🇬" },
+        { _key: "c-10", country: "Morocco", region: "Africa", flag: "🇲🇦" },
+        { _key: "c-11", country: "Rwanda", region: "Africa", flag: "🇷🇼" },
+        { _key: "c-12", country: "Spain", region: "Europe", flag: "🇪🇸" },
+        { _key: "c-13", country: "Italy", region: "Europe", flag: "🇮🇹" },
+        { _key: "c-14", country: "Bulgaria", region: "Europe", flag: "🇧🇬" },
+        { _key: "c-15", country: "Poland", region: "Europe", flag: "🇵🇱" },
+        { _key: "c-16", country: "Chile", region: "Americas", flag: "🇨🇱" },
+        { _key: "c-17", country: "Argentina", region: "Americas", flag: "🇦🇷" },
+        { _key: "c-18", country: "South Africa", region: "Africa", flag: "🇿🇦" },
+        { _key: "c-19", country: "China", region: "Asia", flag: "🇨🇳" },
+        { _key: "c-20", country: "Nepal", region: "Asia", flag: "🇳🇵" },
+        { _key: "c-21", country: "Pakistan", region: "Asia", flag: "🇵🇰" },
+        { _key: "c-22", country: "Guatemala", region: "Americas", flag: "🇬🇹" },
+      ],
+    },
+
+    trustSection: {
+      heading: "Why Manufacturers Trust Switch Supply",
+      description:
+        "One decade of organic excellence, serving leading food manufacturers with authenticity, reliability, and an unmatched global footprint.",
+      cards: [
+        {
+          _key: "tc-0",
+          icon: icon("FiFeather"),
+          title: "Authentic Organic Credentials",
+          description: "Triple certification (ACO, USDA NOP, EU Organic) backed by complete documentation.",
+          accent: "green",
+          bullets: [
+            "Independent third-party certification",
+            "Annual farm audits and inspections",
+            "Complete chain of custody documentation",
+          ],
+        },
+        {
+          _key: "tc-1",
+          icon: icon("FiGlobe"),
+          title: "Unmatched Global Footprint",
+          description: "384 certified farms across 23 countries with export capabilities to 9 markets worldwide.",
+          accent: "sky",
+          bullets: [
+            "Direct farm relationships worldwide",
+            "Multi-origin sourcing for supply security",
+            "Experienced in global logistics and compliance",
+          ],
+        },
+        {
+          _key: "tc-2",
+          icon: icon("FiAward"),
+          title: "Rigorous Quality Standards",
+          description: "Comprehensive quality testing including microbiological analysis and pesticide screening.",
+          accent: "green",
+          bullets: [
+            "ISO certified quality management systems",
+            "Comprehensive COA with every shipment",
+            "Third-party laboratory verification",
+          ],
+        },
+        {
+          _key: "tc-3",
+          icon: icon("FiUsers"),
+          title: "One Decade of Expertise",
+          description: "10+ years serving leading food manufacturers with expert formulation and regulatory support.",
+          accent: "amber",
+          bullets: [
+            "Dedicated technical support team",
+            "Product development consultation",
+            "Regulatory compliance assistance",
+          ],
+        },
+      ],
+    },
+
+    finalCta: {
+      heading: "Partner with Australia's Leading Organic Ingredient Supplier",
+      subheading:
+        "Join hundreds of leading manufacturers who trust Switch Supply for their certified organic ingredients. Contact our team today for a customised quote and product samples.",
+      benefits: [
+        "Triple certified: ACO, USDA NOP & EU Organic",
+        "Direct relationships with 384 certified farms",
+        "Complete chain of custody documentation",
+        "Dedicated technical support team",
+      ],
+      ctaLabel: "Request a Quote",
+      ctaHref: "/contact",
+    },
+  };
+
+  await client.createOrReplace(doc);
+  console.log("  Created/replaced: certifiedOrganicPage");
+}
