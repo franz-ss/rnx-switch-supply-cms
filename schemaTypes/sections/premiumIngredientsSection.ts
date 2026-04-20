@@ -16,7 +16,7 @@ export const premiumIngredientsSection = defineType({
       of: [{
         type: "object",
         fields: [
-          defineField({ name: "icon", title: "Icon (kebab-case Lucide name)", type: "string", validation: (R) => R.required() }),
+          defineField({ name: "icon", title: "Icon", type: "iconPicker" }),
           defineField({ name: "title", type: "string", validation: (R) => R.required() }),
           defineField({ name: "description", type: "text" }),
         ],

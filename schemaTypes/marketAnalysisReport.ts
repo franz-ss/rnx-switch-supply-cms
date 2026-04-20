@@ -26,7 +26,7 @@ export const marketAnalysisReport = defineType({
               type: "object",
               preview: { select: { title: "label" } },
               fields: [
-                defineField({ name: "icon", title: "Icon", type: "string" }),
+                defineField({ name: "icon", title: "Icon", type: "iconPicker" }),
                 defineField({ name: "label", title: "Label", type: "string" }),
               ],
             },

@@ -13,7 +13,7 @@ export const capabilitySection = defineType({
       of: [{
         type: "object",
         fields: [
-          defineField({ name: "icon", title: "Icon (kebab-case Lucide name)", type: "string", validation: (R) => R.required() }),
+          defineField({ name: "icon", title: "Icon", type: "iconPicker" }),
           defineField({ name: "number", title: "Number / Value", type: "string", validation: (R) => R.required() }),
           defineField({ name: "label", title: "Label", type: "string" }),
           defineField({ name: "sublabel", title: "Sub-label", type: "string" }),
