@@ -6,8 +6,8 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const projectId =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "kknhy9ol";
-export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
+  process.env.SANITY_STUDIO_PROJECT_ID ?? "kknhy9ol";
+export const dataset = process.env.SANITY_STUDIO_DATASET ?? "production";
 
 export const client = createClient({
   projectId,
