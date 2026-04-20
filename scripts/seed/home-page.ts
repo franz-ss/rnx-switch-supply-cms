@@ -449,6 +449,7 @@ export async function seedHomePage(): Promise<void> {
   await client.createOrReplace({
     _id: "homePage",
     _type: "homePage",
+    title: "Home Page",
     sections,
   });
   console.log("  Created/replaced: homePage");
