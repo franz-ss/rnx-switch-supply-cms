@@ -6,7 +6,7 @@ import { seedCategories } from "./seed/categories.js";
 import { seedTestimonials } from "./seed/testimonials.js";
 import { seedSiteSettings } from "./seed/siteSettings.js";
 import { seedHomePage } from "./seed/homePage.js";
-import { seedMarketAnalysisReport } from "./seed/marketAnalysisReport.js";
+import { seedMarketAnalysisReport } from "./seed/marketAnalysisReport/index.js";
 import { seedCertifiedOrganicPage } from "./seed/certifiedOrganicPage.js";
 
 async function main(): Promise<void> {
