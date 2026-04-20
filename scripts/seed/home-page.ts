@@ -1,5 +1,7 @@
 import { client, uploadImage } from "./client.js";
 
+const icon = (name: string) => ({ _type: "iconPicker", provider: "fi", name });
+
 export async function seedHomePage(): Promise<void> {
   console.log("\nSeeding home page...");
 
@@ -181,28 +183,28 @@ export async function seedHomePage(): Promise<void> {
       stats: [
         {
           _key: "stat-0",
-          icon: "check-circle",
+          icon: icon("FiCheckCircle"),
           number: "500+",
           label: "Premium and Organic Ingredients",
           sublabel: "Functional, Juices, Extracts, Botanicals & More",
         },
         {
           _key: "stat-1",
-          icon: "globe",
+          icon: icon("FiGlobe"),
           number: "100+",
           label: "Fully Qualified and Vetted",
           sublabel: "Supply Partners and Producers",
         },
         {
           _key: "stat-2",
-          icon: "package",
+          icon: icon("FiPackage"),
           number: "Private Label",
           label: "Custom Made Products",
           sublabel: "For retail customers & distributors",
         },
         {
           _key: "stat-3",
-          icon: "flag",
+          icon: icon("FiFlag"),
           number: "Australian",
           label: "Owned and Operated",
           sublabel: "Established 2013",
@@ -222,21 +224,21 @@ export async function seedHomePage(): Promise<void> {
       features: [
         {
           _key: "feat-0",
-          icon: "users",
+          icon: icon("FiUsers"),
           title: "Rigorous 2-Stage Supplier Onboarding",
           description:
             "Every supplier undergoes a comprehensive vetting process including documentation review and site audits to ensure only the highest-quality partners join our network",
         },
         {
           _key: "feat-1",
-          icon: "shield",
+          icon: icon("FiShield"),
           title: "HACCP Certified Operations",
           description:
             "All facilities maintain HACCP certification with strict food safety protocols, ensuring contamination-free handling at every stage of the supply chain",
         },
         {
           _key: "feat-2",
-          icon: "clipboard-check",
+          icon: icon("FiClipboard"),
           title: "Ethical Sourcing Standards",
           description:
             "We partner exclusively with suppliers committed to fair trade practices, sustainable farming methods, and complete supply chain transparency",
@@ -321,25 +323,25 @@ export async function seedHomePage(): Promise<void> {
       industries: [
         {
           _key: "ind-0",
-          icon: "factory",
+          icon: icon("FiBox"),
           title: "Food Manufacturing",
           description: "Bulk ingredients for food production and processing.",
         },
         {
           _key: "ind-1",
-          icon: "beaker",
+          icon: icon("FiDroplet"),
           title: "Nutraceutical Brands",
           description: "Premium ingredients for supplement formulation.",
         },
         {
           _key: "ind-2",
-          icon: "coffee",
+          icon: icon("FiCoffee"),
           title: "Functional Beverage Companies",
           description: "Specialized ingredients for beverage applications.",
         },
         {
           _key: "ind-3",
-          icon: "users",
+          icon: icon("FiUsers"),
           title: "Product Development Teams",
           description: "Innovation support and ingredient samples.",
         },
@@ -389,21 +391,21 @@ export async function seedHomePage(): Promise<void> {
       features: [
         {
           _key: "pfeat-0",
-          icon: "sparkles",
+          icon: icon("FiStar"),
           title: "Premium Grade",
           description:
             "Only the highest quality ingredients sourced from verified suppliers worldwide",
         },
         {
           _key: "pfeat-1",
-          icon: "shield",
+          icon: icon("FiShield"),
           title: "Safety Tested",
           description:
             "Comprehensive testing for heavy metals, pesticides, and microbiology",
         },
         {
           _key: "pfeat-2",
-          icon: "microscope",
+          icon: icon("FiZoomIn"),
           title: "Lab Verified",
           description:
             "Third-party laboratory analysis with full certificates of analysis",
