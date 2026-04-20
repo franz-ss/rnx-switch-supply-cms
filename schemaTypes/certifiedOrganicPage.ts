@@ -1,12 +1,12 @@
 import { defineField, defineType } from "sanity";
-import { LeaveIcon } from "@sanity/icons";
+import { Leaf } from "lucide-react";
 import { imageWithAlt } from "./sections/_shared";
 
 export const certifiedOrganicPage = defineType({
   name: "certifiedOrganicPage",
   title: "Certified Organic Page",
   type: "document",
-  icon: LeaveIcon,
+  icon: Leaf,
   fields: [
     defineField({ name: "title", title: "Internal Title", type: "string" }),
     defineField({ name: "seoTitle", title: "SEO Title", type: "string", validation: (R) => R.max(70) }),

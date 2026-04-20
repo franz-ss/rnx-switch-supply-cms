@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { CogIcon } from "@sanity/icons";
+import { Settings } from "lucide-react";
 
 const navLinkType = {
   type: "object" as const,
@@ -22,7 +22,7 @@ const navLinkType = {
 
 export const siteSettings = defineType({
   name: "siteSettings",
-  icon: CogIcon,
+  icon: Settings,
   title: "Site Settings",
   type: "document",
   fields: [

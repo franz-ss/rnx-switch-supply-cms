@@ -1,11 +1,11 @@
 import {defineField, defineType} from 'sanity'
-import {HomeIcon} from '@sanity/icons'
+import { Home } from 'lucide-react'
 
 export const homePage = defineType({
   name: 'homePage',
   title: 'Home Page',
   type: 'document',
-  icon: HomeIcon,
+  icon: Home,
   fields: [
     defineField({name: 'title', title: 'Internal Title', type: 'string'}),
     defineField({

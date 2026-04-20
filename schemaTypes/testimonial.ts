@@ -1,9 +1,9 @@
-import { CommentIcon } from "@sanity/icons";
+import { MessageSquare } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const testimonial = defineType({
   name: "testimonial",
-  icon: CommentIcon,
+  icon: MessageSquare,
   title: "Testimonial",
   type: "document",
   fields: [
