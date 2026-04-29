@@ -51,6 +51,17 @@ export default defineConfig({
               .schemaType('siteSettings')
               .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
             S.divider(),
+            S.listItem()
+              .title('Sections')
+              .id('sections')
+              .child(
+                S.list()
+                  .title('Sections')
+                  .items([
+                    S.documentTypeListItem('heroSection').title('Hero'),
+                  ]),
+              ),
+            S.divider(),
             S.documentTypeListItem('ingredientCategory').title('Ingredient Categories'),
             S.documentTypeListItem('testimonial').title('Testimonials'),
             S.documentTypeListItem('blogPost').title('Blog Posts'),
