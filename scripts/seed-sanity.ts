@@ -22,14 +22,17 @@ async function main(): Promise<void> {
 
   console.log(`Seeding Sanity (project: ${projectId}, dataset: ${dataset})...`);
 
-  await seedCategories();
-  await seedTestimonials();
-  await seedSiteSettings();
+  await Promise.all([
+    seedCategories(),
+    seedTestimonials(),
+    seedSiteSettings(),
+    seedMarketAnalysisReport(),
+    seedCertifiedOrganicPage(),
+    seedPrivateLabelPage(),
+    seedBlogPosts(),
+  ]);
+
   await seedHomePage();
-  await seedMarketAnalysisReport();
-  await seedCertifiedOrganicPage();
-  await seedPrivateLabelPage();
-  await seedBlogPosts();
 
   console.log("\nDone.");
 }
