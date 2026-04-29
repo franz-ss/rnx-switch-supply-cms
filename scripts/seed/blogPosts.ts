@@ -15,13 +15,6 @@ const span = (text: string, marks: string[] = []) => ({
   marks,
 });
 const strong = (text: string) => span(text, ["strong"]);
-const em = (text: string) => span(text, ["em"]);
-
-function linkSpan(text: string, href: string, markDefs: object[]) {
-  const linkKey = k();
-  markDefs.push({ _key: linkKey, _type: "link", href });
-  return span(text, [linkKey]);
-}
 
 const h2 = (text: string) => ({
   _type: "block" as const,
@@ -38,18 +31,6 @@ function p(...children: ReturnType<typeof span>[]) {
     style: "normal",
     children,
     markDefs: [] as object[],
-  };
-}
-
-function pWithLinks(build: (markDefs: object[]) => ReturnType<typeof span>[]) {
-  const markDefs: object[] = [];
-  const children = build(markDefs);
-  return {
-    _type: "block" as const,
-    _key: k(),
-    style: "normal",
-    children,
-    markDefs,
   };
 }
 
@@ -90,7 +71,7 @@ function functionalNutritionContent(
     h2("The Rise of Targeted Wellness"),
     p(
       span(
-        "This demand is driven by consumers seeking specific, targeted benefits rather than generic "health" claims. Gone are the days of vague promises; today's consumers are educated and looking for solutions to their distinct health concerns. Gut health, immunity, cognitive performance, beauty-from-within, and stress management have emerged as top priorities, particularly among millennials and Gen Z consumers. These demographic groups are proactive about their health and are willing to invest in products that deliver tangible results.",
+        "This demand is driven by consumers seeking specific, targeted benefits rather than generic \"health\" claims. Gone are the days of vague promises; today's consumers are educated and looking for solutions to their distinct health concerns. Gut health, immunity, cognitive performance, beauty-from-within, and stress management have emerged as top priorities, particularly among millennials and Gen Z consumers. These demographic groups are proactive about their health and are willing to invest in products that deliver tangible results.",
       ),
     ),
     img(targetedWellnessImg, "Targeted wellness consumer priorities"),
@@ -179,13 +160,13 @@ function functionalNutritionContent(
 
 function supplyChainContent(marketChartImg: ImageRef) {
   return [
-    pWithLinks((md) => [
+    p(
       span(
         "Long lead times, high minimum order quantities (MOQs), and a lack of formulation flexibility can paralyze product launches and erode profit margins overnight. As a result, forward-thinking companies are rapidly turning to ",
       ),
       strong("private label ingredient solutions"),
       span(" as a strategic lever to maintain agility and build resilience."),
-    ]),
+    ),
     h2("Agility in an Uncertain World"),
     p(
       span(
@@ -245,7 +226,7 @@ function cleanLabelContent(marketChartImg: ImageRef) {
         ", opting for clean label alternatives (Ingredion, 2025; Innova Market Insights, 2024). This shift is not merely a preference; it is a mandate forcing brands across food, beverage, and nutraceutical sectors to rethink traditional formulations.",
       ),
     ),
-    h2("The Technical Hurdles of "Natural""),
+    h2('The Technical Hurdles of "Natural"'),
     p(
       span(
         "Transitioning away from synthetic ingredients is rarely a simple swap. Ingredients such as artificial colors, potent preservatives like sodium benzoate, and synthetic emulsifiers have historically provided robust performance at a low cost.",
@@ -280,7 +261,7 @@ function cleanLabelContent(marketChartImg: ImageRef) {
     ),
     p(
       span(
-        "The challenge for brands is not just removing the "bad" ingredients, but maintaining the sensory experience and price point consumers expect.",
+        "The challenge for brands is not just removing the \"bad\" ingredients, but maintaining the sensory experience and price point consumers expect.",
       ),
     ),
     h2("The Private Label Pathway to Reformulation"),
@@ -302,7 +283,7 @@ function cleanLabelContent(marketChartImg: ImageRef) {
     bullet(
       strong("Replacing Synthetic Stabilizers:"),
       span(
-        " Instead of modified starches, formulators are turning to upcycled citrus fibers and chickpea protein, which provide necessary viscosity while appearing "clean" on a label.",
+        ' Instead of modified starches, formulators are turning to upcycled citrus fibers and chickpea protein, which provide necessary viscosity while appearing "clean" on a label.',
       ),
     ),
     bullet(
