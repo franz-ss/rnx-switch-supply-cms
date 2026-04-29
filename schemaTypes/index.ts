@@ -18,6 +18,7 @@ import { popularIngredients } from "./sections/popularIngredients";
 import { premiumIngredientsSection } from "./sections/premiumIngredientsSection";
 import { testimonialsSection } from "./sections/testimonials";
 import { finalCTA } from "./sections/finalCTA";
+import { heroSection } from "./sections/heroSection";
 
 export const schemaTypes = [
   // Documents
@@ -29,6 +30,7 @@ export const schemaTypes = [
   certifiedOrganicPage,
   privateLabelPage,
   marketAnalysisReport,
+  heroSection,
   // Section object types
   hero,
   marketReportBanner,

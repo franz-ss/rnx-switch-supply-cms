@@ -13,7 +13,7 @@ export const homePage = defineType({
       title: 'Page Sections',
       type: 'array',
       of: [
-        {type: 'hero'},
+        { type: 'reference', to: [{ type: 'heroSection' }] },
         {type: 'marketReportBanner'},
         {type: 'certificationSection'},
         {type: 'ingredientCapabilities'},
