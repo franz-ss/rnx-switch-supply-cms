@@ -31,6 +31,13 @@ export default defineConfig({
                 S.document().schemaType('certifiedOrganicPage').documentId('certifiedOrganicPage'),
               ),
             S.listItem()
+              .title('Private Label Page')
+              .id('privateLabelPage')
+              .schemaType('privateLabelPage')
+              .child(
+                S.document().schemaType('privateLabelPage').documentId('privateLabelPage'),
+              ),
+            S.listItem()
               .title('Market Analysis Report')
               .id('marketAnalysisReport')
               .schemaType('marketAnalysisReport')
@@ -65,6 +72,12 @@ export default defineConfig({
             select: {title: 'title'},
             resolve: () => ({
               locations: [{title: 'Certified Organic', href: '/ingredients/certified-organic'}],
+            }),
+          }),
+          privateLabelPage: defineLocations({
+            select: {title: 'title'},
+            resolve: () => ({
+              locations: [{title: 'Private Label', href: '/private-label'}],
             }),
           }),
           marketAnalysisReport: defineLocations({
