@@ -1,90 +1,104 @@
 // scripts/seed/privateLabelPage.ts
 import { client, uploadImage } from "./client.js";
 
-function img(ref: Awaited<ReturnType<typeof uploadImage>>) {
+type ImageRef = Awaited<ReturnType<typeof uploadImage>>;
+
+function img(ref: ImageRef) {
   return ref ? { image: ref } : {};
 }
+
+const packagingGroups: { label: string; specs: [string, string][] }[] = [
+  {
+    label: "Stand-Up Pouches and Sachets",
+    specs: [
+      ["images/private-label/kraft-paper-foil-pouch.png", "Kraft Paper & Foil Pouch"],
+      ["images/private-label/stand-up-pouches-gusset.png", "Side and Bottom Gusset Stand up Pouches (SUPs)"],
+      ["images/private-label/sachet-packaging.jpg", "Various Pouches and Sachet Styles"],
+      ["images/private-label/pouch-sachet-1.png", "Various Pouches and Sachet Styles"],
+      ["images/private-label/pouch-sachet-2.png", "Various Pouches and Sachet Styles"],
+      ["images/private-label/pouch-sachet-3.png", "Various Pouches and Sachet Styles"],
+      ["images/private-label/pouch-sachet-4.png", "Various Pouches and Sachet Styles"],
+      ["images/private-label/pouch-sachet-5.png", "Various Pouches and Sachet Styles"],
+    ],
+  },
+  {
+    label: "Glass Jars",
+    specs: [
+      ["images/private-label/mason-jars.png", "Mason Jars"],
+      ["images/private-label/straight-sided-jars.png", "Straight Sided Jars"],
+      ["images/private-label/bail-lid-jars.png", "Bail Lid Jars"],
+      ["images/private-label/glass-jars-1.png", "Glass Jar Variety"],
+      ["images/private-label/glass-jars-2.png", "Glass Jar Variety"],
+      ["images/private-label/glass-jars-3.png", "Glass Jar Variety"],
+    ],
+  },
+  {
+    label: "Cylinders",
+    specs: [
+      ["images/private-label/cardboard-cylinders.png", "Cardboard Cylinder"],
+      ["images/private-label/paper-tubes.png", "Paper Tubes"],
+      ["images/private-label/cardboard-cylinder-2.png", "Cylinder Packaging Variety"],
+      ["images/private-label/canister-1.png", "Cylinder Packaging Variety"],
+      ["images/private-label/canister-2.png", "Cylinder Packaging Variety"],
+      ["images/private-label/cardboard-cylinder-3.png", "Cylinder Packaging Variety"],
+    ],
+  },
+  {
+    label: "Aseptic Bags",
+    specs: [
+      ["images/private-label/aseptic-bags-20l-4l-1l.png", "20L / 4L / 1L Aseptic Bags"],
+      ["images/private-label/aseptic-drum-250l-300l.png", "250-300L Aseptic Drums"],
+      ["images/private-label/cask-1.png", "Aseptic Bag Packaging"],
+      ["images/private-label/cask-2.png", "Aseptic Bag Packaging"],
+      ["images/private-label/cask-3.png", "Aseptic Bag Packaging"],
+    ],
+  },
+];
 
 export async function seedPrivateLabelPage(): Promise<void> {
   console.log("\nSeeding private label page...");
 
-  // Upload hero images
-  const [heroBg, gallery0, gallery1, gallery2, gallery3] = await Promise.all([
-    uploadImage("images/private-label/certified-organic-warehouse.jpg", "Switch Supply private label warehouse"),
-    uploadImage("images/private-label/bulk-packaging-3.png", "Bulk packaging options"),
-    uploadImage("images/private-label/cardboard-cylinder-2.png", "Cardboard cylinder packaging"),
-    uploadImage("images/private-label/plastic-2.png", "Protein jar packaging"),
-    uploadImage("images/private-label/cask-1.png", "Aseptic bag packaging"),
-  ]);
-
-  // Upload global ingredients images
-  const [globalImg0, globalImg1, globalImg2] = await Promise.all([
-    uploadImage("images/private-label/global-sourcing-1.png", "Your Label Here"),
-    uploadImage("images/private-label/global-sourcing-2.png", "Your Label Here"),
-    uploadImage("images/private-label/global-sourcing-3.png", "Your Brand"),
-  ]);
-
-  // Upload top product images
-  const [prod0, prod1, prod2, prod3, prod4] = await Promise.all([
-    uploadImage("images/private-label/adaptogens.png", "Adaptogens"),
-    uploadImage("images/private-label/functional-extracts.png", "Functional Extracts"),
-    uploadImage("images/private-label/fibres-prebiotics.png", "Fibres and Prebiotics"),
-    uploadImage("images/private-label/mushroom-powders.png", "Mushroom Powders"),
-    uploadImage("images/private-label/nootropics.png", "Nootropics"),
-  ]);
-
-  // Upload NPD images
-  const [npd0, npd1] = await Promise.all([
-    uploadImage("images/private-label/private-labeling.png", "Full Turn Key Solution"),
-    uploadImage("images/private-label/new-product-development.jpg", "Formulate a New Product"),
-  ]);
-
-  // Upload packaging format images — pouches
-  const [pfPouch0, pfPouch1, pfPouch2, pfPouch3, pfPouch4, pfPouch5, pfPouch6, pfPouch7] = await Promise.all([
-    uploadImage("images/private-label/kraft-paper-foil-pouch.png", "Kraft Paper & Foil Pouch"),
-    uploadImage("images/private-label/stand-up-pouches-gusset.png", "Side and Bottom Gusset Stand up Pouches (SUPs)"),
-    uploadImage("images/private-label/sachet-packaging.jpg", "Various Pouches and Sachet Styles"),
-    uploadImage("images/private-label/pouch-sachet-1.png", "Various Pouches and Sachet Styles"),
-    uploadImage("images/private-label/pouch-sachet-2.png", "Various Pouches and Sachet Styles"),
-    uploadImage("images/private-label/pouch-sachet-3.png", "Various Pouches and Sachet Styles"),
-    uploadImage("images/private-label/pouch-sachet-4.png", "Various Pouches and Sachet Styles"),
-    uploadImage("images/private-label/pouch-sachet-5.png", "Various Pouches and Sachet Styles"),
-  ]);
-
-  // Upload packaging format images — glass jars
-  const [pfGlass0, pfGlass1, pfGlass2, pfGlass3, pfGlass4, pfGlass5] = await Promise.all([
-    uploadImage("images/private-label/mason-jars.png", "Mason Jars"),
-    uploadImage("images/private-label/straight-sided-jars.png", "Straight Sided Jars"),
-    uploadImage("images/private-label/bail-lid-jars.png", "Bail Lid Jars"),
-    uploadImage("images/private-label/glass-jars-1.png", "Glass Jar Variety"),
-    uploadImage("images/private-label/glass-jars-2.png", "Glass Jar Variety"),
-    uploadImage("images/private-label/glass-jars-3.png", "Glass Jar Variety"),
-  ]);
-
-  // Upload packaging format images — cylinders
-  const [pfCyl0, pfCyl1, pfCyl2, pfCyl3, pfCyl4, pfCyl5] = await Promise.all([
-    uploadImage("images/private-label/cardboard-cylinders.png", "Cardboard Cylinder"),
-    uploadImage("images/private-label/paper-tubes.png", "Paper Tubes"),
-    uploadImage("images/private-label/cardboard-cylinder-2.png", "Cylinder Packaging Variety"),
-    uploadImage("images/private-label/canister-1.png", "Cylinder Packaging Variety"),
-    uploadImage("images/private-label/canister-2.png", "Cylinder Packaging Variety"),
-    uploadImage("images/private-label/cardboard-cylinder-3.png", "Cylinder Packaging Variety"),
-  ]);
-
-  // Upload packaging format images — aseptic bags
-  const [pfAseptic0, pfAseptic1, pfAseptic2, pfAseptic3, pfAseptic4] = await Promise.all([
-    uploadImage("images/private-label/aseptic-bags-20l-4l-1l.png", "20L / 4L / 1L Aseptic Bags"),
-    uploadImage("images/private-label/aseptic-drum-250l-300l.png", "250-300L Aseptic Drums"),
-    uploadImage("images/private-label/cask-1.png", "Aseptic Bag Packaging"),
-    uploadImage("images/private-label/cask-2.png", "Aseptic Bag Packaging"),
-    uploadImage("images/private-label/cask-3.png", "Aseptic Bag Packaging"),
-  ]);
-
-  // Upload remaining images
-  const [sustainImg, trendingImg, finalCtaBg] = await Promise.all([
-    uploadImage("images/private-label/sustainable-packaging-options.png", "Sustainable packaging options"),
-    uploadImage("images/private-label/functional-nutrition-demand.png", "Functional nutrition demand"),
-    uploadImage("images/private-label/private-label-products.jpg", "Private label product range"),
+  const [
+    [heroBg, gallery0, gallery1, gallery2, gallery3],
+    [globalImg0, globalImg1, globalImg2],
+    [prod0, prod1, prod2, prod3, prod4],
+    [npd0, npd1],
+    packagingRefs,
+    [sustainImg, trendingImg, finalCtaBg],
+  ] = await Promise.all([
+    Promise.all([
+      uploadImage("images/private-label/certified-organic-warehouse.jpg", "Switch Supply private label warehouse"),
+      uploadImage("images/private-label/bulk-packaging-3.png", "Bulk packaging options"),
+      uploadImage("images/private-label/cardboard-cylinder-2.png", "Cardboard cylinder packaging"),
+      uploadImage("images/private-label/plastic-2.png", "Protein jar packaging"),
+      uploadImage("images/private-label/cask-1.png", "Aseptic bag packaging"),
+    ]),
+    Promise.all([
+      uploadImage("images/private-label/global-sourcing-1.png", "Your Label Here"),
+      uploadImage("images/private-label/global-sourcing-2.png", "Your Label Here"),
+      uploadImage("images/private-label/global-sourcing-3.png", "Your Brand"),
+    ]),
+    Promise.all([
+      uploadImage("images/private-label/adaptogens.png", "Adaptogens"),
+      uploadImage("images/private-label/functional-extracts.png", "Functional Extracts"),
+      uploadImage("images/private-label/fibres-prebiotics.png", "Fibres and Prebiotics"),
+      uploadImage("images/private-label/mushroom-powders.png", "Mushroom Powders"),
+      uploadImage("images/private-label/nootropics.png", "Nootropics"),
+    ]),
+    Promise.all([
+      uploadImage("images/private-label/private-labeling.png", "Full Turn Key Solution"),
+      uploadImage("images/private-label/new-product-development.jpg", "Formulate a New Product"),
+    ]),
+    Promise.all(
+      packagingGroups.map((group) =>
+        Promise.all(group.specs.map(([path, alt]) => uploadImage(path, alt)))
+      )
+    ),
+    Promise.all([
+      uploadImage("images/private-label/sustainable-packaging-options.png", "Sustainable packaging options"),
+      uploadImage("images/private-label/functional-nutrition-demand.png", "Functional nutrition demand"),
+      uploadImage("images/private-label/private-label-products.jpg", "Private label product range"),
+    ]),
   ]);
 
   const doc = {
@@ -107,12 +121,9 @@ export async function seedPrivateLabelPage(): Promise<void> {
         "10+ Years of Experience",
       ],
       ...(heroBg ? { backgroundImage: heroBg } : {}),
-      galleryImages: [
-        ...(gallery0 ? [{ _key: "gi-0", ...img(gallery0) }] : []),
-        ...(gallery1 ? [{ _key: "gi-1", ...img(gallery1) }] : []),
-        ...(gallery2 ? [{ _key: "gi-2", ...img(gallery2) }] : []),
-        ...(gallery3 ? [{ _key: "gi-3", ...img(gallery3) }] : []),
-      ],
+      galleryImages: [gallery0, gallery1, gallery2, gallery3].flatMap((ref, i) =>
+        ref ? [{ _key: `gi-${i}`, ...img(ref) }] : []
+      ),
     },
 
     globalIngredients: {
@@ -171,57 +182,13 @@ export async function seedPrivateLabelPage(): Promise<void> {
       heading: "Packaging Formats That Fit Your Brand",
       subheading:
         "Premium, functional, and customisable packaging to elevate your brand presence.",
-      tabs: [
-        {
-          _key: "tab-0",
-          label: "Stand-Up Pouches and Sachets",
-          images: [
-            ...(pfPouch0 ? [{ _key: "i-0", ...img(pfPouch0), label: "Kraft Paper & Foil Pouch" }] : []),
-            ...(pfPouch1 ? [{ _key: "i-1", ...img(pfPouch1), label: "Side and Bottom Gusset Stand up Pouches (SUPs)" }] : []),
-            ...(pfPouch2 ? [{ _key: "i-2", ...img(pfPouch2), label: "Various Pouches and Sachet Styles" }] : []),
-            ...(pfPouch3 ? [{ _key: "i-3", ...img(pfPouch3), label: "Various Pouches and Sachet Styles" }] : []),
-            ...(pfPouch4 ? [{ _key: "i-4", ...img(pfPouch4), label: "Various Pouches and Sachet Styles" }] : []),
-            ...(pfPouch5 ? [{ _key: "i-5", ...img(pfPouch5), label: "Various Pouches and Sachet Styles" }] : []),
-            ...(pfPouch6 ? [{ _key: "i-6", ...img(pfPouch6), label: "Various Pouches and Sachet Styles" }] : []),
-            ...(pfPouch7 ? [{ _key: "i-7", ...img(pfPouch7), label: "Various Pouches and Sachet Styles" }] : []),
-          ],
-        },
-        {
-          _key: "tab-1",
-          label: "Glass Jars",
-          images: [
-            ...(pfGlass0 ? [{ _key: "i-0", ...img(pfGlass0), label: "Mason Jars" }] : []),
-            ...(pfGlass1 ? [{ _key: "i-1", ...img(pfGlass1), label: "Straight Sided Jars" }] : []),
-            ...(pfGlass2 ? [{ _key: "i-2", ...img(pfGlass2), label: "Bail Lid Jars" }] : []),
-            ...(pfGlass3 ? [{ _key: "i-3", ...img(pfGlass3), label: "Glass Jar Variety" }] : []),
-            ...(pfGlass4 ? [{ _key: "i-4", ...img(pfGlass4), label: "Glass Jar Variety" }] : []),
-            ...(pfGlass5 ? [{ _key: "i-5", ...img(pfGlass5), label: "Glass Jar Variety" }] : []),
-          ],
-        },
-        {
-          _key: "tab-2",
-          label: "Cylinders",
-          images: [
-            ...(pfCyl0 ? [{ _key: "i-0", ...img(pfCyl0), label: "Cardboard Cylinder" }] : []),
-            ...(pfCyl1 ? [{ _key: "i-1", ...img(pfCyl1), label: "Paper Tubes" }] : []),
-            ...(pfCyl2 ? [{ _key: "i-2", ...img(pfCyl2), label: "Cylinder Packaging Variety" }] : []),
-            ...(pfCyl3 ? [{ _key: "i-3", ...img(pfCyl3), label: "Cylinder Packaging Variety" }] : []),
-            ...(pfCyl4 ? [{ _key: "i-4", ...img(pfCyl4), label: "Cylinder Packaging Variety" }] : []),
-            ...(pfCyl5 ? [{ _key: "i-5", ...img(pfCyl5), label: "Cylinder Packaging Variety" }] : []),
-          ],
-        },
-        {
-          _key: "tab-3",
-          label: "Aseptic Bags",
-          images: [
-            ...(pfAseptic0 ? [{ _key: "i-0", ...img(pfAseptic0), label: "20L / 4L / 1L Aseptic Bags" }] : []),
-            ...(pfAseptic1 ? [{ _key: "i-1", ...img(pfAseptic1), label: "250-300L Aseptic Drums" }] : []),
-            ...(pfAseptic2 ? [{ _key: "i-2", ...img(pfAseptic2), label: "Aseptic Bag Packaging" }] : []),
-            ...(pfAseptic3 ? [{ _key: "i-3", ...img(pfAseptic3), label: "Aseptic Bag Packaging" }] : []),
-            ...(pfAseptic4 ? [{ _key: "i-4", ...img(pfAseptic4), label: "Aseptic Bag Packaging" }] : []),
-          ],
-        },
-      ],
+      tabs: packagingGroups.map((group, gi) => ({
+        _key: `tab-${gi}`,
+        label: group.label,
+        images: packagingRefs[gi].flatMap((ref, ii) =>
+          ref ? [{ _key: `i-${ii}`, ...img(ref), label: group.specs[ii][1] }] : []
+        ),
+      })),
     },
 
     sustainablePackaging: {
