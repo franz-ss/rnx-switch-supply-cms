@@ -45,7 +45,7 @@ export const privateLabelPage = defineType({
           type: "array",
           of: [{
             type: "object",
-            preview: { select: { title: "alt", media: "image" } },
+            preview: { select: { title: "image.alt", media: "image.image" } },
             fields: [imageWithAlt("image", "Image")],
           }],
         }),
