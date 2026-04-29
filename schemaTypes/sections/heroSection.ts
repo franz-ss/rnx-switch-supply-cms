@@ -3,7 +3,7 @@ import { ctaField, imageWithAlt } from "./_shared";
 
 export const heroSection = defineType({
   name: "heroSection",
-  title: "Hero Section",
+  title: "Hero",
   type: "document",
   fields: [
     defineField({
