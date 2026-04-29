@@ -1,3 +1,4 @@
+import { blogPost } from "./blogPost";
 import { testimonial } from "./testimonial";
 import { ingredientCategory } from "./ingredientCategory";
 import { siteSettings } from "./siteSettings";
@@ -20,6 +21,7 @@ import { finalCTA } from "./sections/finalCTA";
 
 export const schemaTypes = [
   // Documents
+  blogPost,
   testimonial,
   ingredientCategory,
   siteSettings,

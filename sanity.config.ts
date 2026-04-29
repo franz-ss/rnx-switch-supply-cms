@@ -53,6 +53,7 @@ export default defineConfig({
             S.divider(),
             S.documentTypeListItem('ingredientCategory').title('Ingredient Categories'),
             S.documentTypeListItem('testimonial').title('Testimonials'),
+            S.documentTypeListItem('blogPost').title('Blog Posts'),
           ]),
     }),
     presentationTool({
@@ -105,6 +106,12 @@ export default defineConfig({
                   href: `/ingredients/${doc?.slug}`,
                 },
               ],
+            }),
+          }),
+          blogPost: defineLocations({
+            select: { title: 'title', slug: 'slug.current' },
+            resolve: (doc) => ({
+              locations: [{ title: doc?.title ?? 'Blog Post', href: `/blog/${doc?.slug}` }],
             }),
           }),
         },
