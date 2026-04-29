@@ -8,10 +8,9 @@ export const heroSection = defineType({
   fields: [
     defineField({
       name: "title",
-      title: "Internal Title",
+      title: "Internal Name",
       type: "string",
-      description:
-        "Used only in the Studio (e.g. 'Hero / Default'). Not shown on the page.",
+      description: "Variant name shown in Studio (e.g. 'Default', 'Summer 2026').",
       validation: (R) => R.required(),
     }),
     defineField({
@@ -31,5 +30,11 @@ export const heroSection = defineType({
     }),
     imageWithAlt("backgroundImage", "Background Image"),
   ],
-  preview: { select: { title: "title", subtitle: "headline" } },
+  preview: {
+    select: { title: "title", subtitle: "headline" },
+    prepare: ({ title, subtitle }: { title?: string; subtitle?: string }) => ({
+      title: title ? `Hero — ${title}` : "Hero",
+      subtitle,
+    }),
+  },
 });
