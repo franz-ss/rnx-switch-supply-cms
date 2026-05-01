@@ -32,7 +32,7 @@ export interface ProductCatalogImages {
 
 export function buildProductCatalog(images: ProductCatalogImages) {
   return {
-    heading: 'Top Performing Functional Ingredients 2025',
+    heading: 'Top Performing Functional Ingredients 2025-2026',
     sections: [
       nootropicsSection({
         lTheanine: images.lTheanine,

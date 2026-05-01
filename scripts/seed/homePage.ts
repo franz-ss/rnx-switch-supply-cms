@@ -64,6 +64,25 @@ export async function seedHomePage(): Promise<void> {
     ),
   ]);
 
+  // Create heroSection document (standalone, referenced from homePage)
+  await client.createOrReplace({
+    _id: "heroSection-default",
+    _type: "heroSection",
+    title: "Default",
+    headline: "Global Supplier of 500+ Health and Wellness Ingredients",
+    subheading:
+      "Certified organic, botanical and functional ingredients supplied to food manufacturers, nutraceutical brands and product developers worldwide.",
+    primaryCta: { label: "Browse Ingredients", href: "/ingredients" },
+    secondaryCta: { label: "Request Quote", href: "/contact" },
+    trustBullets: [
+      "Certified Organic Supply Chains",
+      "Global Ingredient Sourcing",
+      "Private Label Solutions",
+    ],
+    ...(heroBackground ? { backgroundImage: heroBackground } : {}),
+  });
+  console.log("  Created/replaced: heroSection-default");
+
   const sections = [
     // 1. Market Report Banner
     {
@@ -74,21 +93,11 @@ export async function seedHomePage(): Promise<void> {
       ctaLabel: "View Report",
     },
 
-    // 2. Hero
+    // 2. Hero — reference to heroSection document
     {
-      _type: "hero",
+      _type: "reference",
+      _ref: "heroSection-default",
       _key: "section-hero",
-      headline: "Global Supplier of 500+ Health and Wellness Ingredients",
-      subheading:
-        "Certified organic, botanical and functional ingredients supplied to food manufacturers, nutraceutical brands and product developers worldwide.",
-      primaryCta: { label: "Browse Ingredients", href: "/ingredients" },
-      secondaryCta: { label: "Request Quote", href: "/contact" },
-      trustBullets: [
-        "Certified Organic Supply Chains",
-        "Global Ingredient Sourcing",
-        "Private Label Solutions",
-      ],
-      ...(heroBackground ? { backgroundImage: heroBackground } : {}),
     },
 
     // 3. Certification Section
