@@ -91,6 +91,7 @@ export async function seedHomePage(): Promise<void> {
       label: "New Report",
       heading: "Functional Ingredients Market Analysis Report",
       ctaLabel: "View Report",
+      ctaHref: "/market-analysis-report",
     },
 
     // 2. Hero — reference to heroSection document
@@ -230,6 +231,7 @@ export async function seedHomePage(): Promise<void> {
       description:
         "Quality isn't just a promise—it's embedded in every stage of our supply chain. Through rigorous supplier selection and continuous quality monitoring, we deliver ingredients you can trust, backed by complete traceability and industry-leading certifications.",
       ctaLabel: "Read More",
+      ctaHref: "/quality",
       features: [
         {
           _key: "feat-0",
@@ -300,6 +302,7 @@ export async function seedHomePage(): Promise<void> {
         "Organic certification available",
       ],
       ctaLabel: "Start Your Private Label Project",
+      ctaHref: "/private-label",
       ...(plShowcase ? { showcaseImage: plShowcase } : {}),
       packagingHeading: "Flexible Packaging Options",
       packagingDescription:
@@ -397,6 +400,7 @@ export async function seedHomePage(): Promise<void> {
       description:
         "We supply premium-grade botanical extracts, superfood powders, and functional ingredients to manufacturers and brands who demand excellence. Each ingredient is carefully selected and rigorously tested to meet the highest industry standards.",
       ctaLabel: "Explore Premium Range",
+      ctaHref: "/ingredients",
       features: [
         {
           _key: "pfeat-0",
