@@ -1,26 +1,31 @@
-import { blogPost } from "./blogPost";
-import { testimonial } from "./testimonial";
-import { ingredientCategory } from "./ingredientCategory";
-import { siteSettings } from "./siteSettings";
-import { homePage } from "./homePage";
-import { certifiedOrganicPage } from "./certifiedOrganicPage";
-import { privateLabelPage } from "./privateLabelPage";
-import { marketAnalysisReport } from "./marketAnalysisReport";
-import { hero } from "./sections/hero";
-import { marketReportBanner } from "./sections/marketReportBanner";
-import { certificationSection } from "./sections/certificationSection";
-import { ingredientCapabilities } from "./sections/ingredientCapabilities";
-import { capabilitySection } from "./sections/capabilitySection";
-import { certifiedOrganicSection } from "./sections/certifiedOrganicSection";
-import { privateLabelSection } from "./sections/privateLabelSection";
-import { industriesSection } from "./sections/industriesSection";
-import { popularIngredients } from "./sections/popularIngredients";
-import { premiumIngredientsSection } from "./sections/premiumIngredientsSection";
-import { testimonialsSection } from "./sections/testimonials";
-import { finalCTA } from "./sections/finalCTA";
-import { heroSection } from "./sections/heroSection";
+import {blogPost} from './documents/blogPost'
+import {ingredientCategory} from './documents/ingredientCategory'
+import {testimonial} from './documents/testimonial'
+import {certifiedOrganicPage} from './documents/pages/certifiedOrganicPage'
+import {homePage} from './documents/pages/homePage'
+import {marketAnalysisReport} from './documents/pages/marketAnalysisReport'
+import {privateLabelPage} from './documents/pages/privateLabelPage'
+import {siteSettings} from './documents/settings/siteSettings'
+import {cta} from './objects/cta'
+import {link} from './objects/link'
+import {capabilitySection} from './sections/documents/capabilitySection'
+import {certificationSection} from './sections/documents/certificationSection'
+import {certifiedOrganicSection} from './sections/documents/certifiedOrganicSection'
+import {finalCtaSection} from './sections/documents/finalCtaSection'
+import {heroSection} from './sections/documents/heroSection'
+import {industriesSection} from './sections/documents/industriesSection'
+import {ingredientCapabilitiesSection} from './sections/documents/ingredientCapabilitiesSection'
+import {marketReportBannerSection} from './sections/documents/marketReportBannerSection'
+import {popularIngredientsSection} from './sections/documents/popularIngredientsSection'
+import {premiumIngredientsSection} from './sections/documents/premiumIngredientsSection'
+import {privateLabelSection} from './sections/documents/privateLabelSection'
+import {testimonialsSection} from './sections/documents/testimonialsSection'
 
 export const schemaTypes = [
+  // Objects
+  link,
+  cta,
+
   // Documents
   blogPost,
   testimonial,
@@ -30,18 +35,18 @@ export const schemaTypes = [
   certifiedOrganicPage,
   privateLabelPage,
   marketAnalysisReport,
+
+  // Reusable section documents
+  marketReportBannerSection,
   heroSection,
-  // Section object types
-  hero,
-  marketReportBanner,
   certificationSection,
-  ingredientCapabilities,
+  ingredientCapabilitiesSection,
   capabilitySection,
   certifiedOrganicSection,
   privateLabelSection,
   industriesSection,
-  popularIngredients,
+  popularIngredientsSection,
   premiumIngredientsSection,
   testimonialsSection,
-  finalCTA,
-];
+  finalCtaSection,
+]

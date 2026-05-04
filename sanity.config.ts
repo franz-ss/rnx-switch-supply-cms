@@ -19,52 +19,84 @@ export default defineConfig({
           .title('Content')
           .items([
             S.listItem()
-              .title('Home Page')
-              .id('homePage')
-              .schemaType('homePage')
-              .child(S.document().schemaType('homePage').documentId('homePage')),
-            S.listItem()
-              .title('Certified Organic Page')
-              .id('certifiedOrganicPage')
-              .schemaType('certifiedOrganicPage')
-              .child(
-                S.document().schemaType('certifiedOrganicPage').documentId('certifiedOrganicPage'),
-              ),
-            S.listItem()
-              .title('Private Label Page')
-              .id('privateLabelPage')
-              .schemaType('privateLabelPage')
-              .child(
-                S.document().schemaType('privateLabelPage').documentId('privateLabelPage'),
-              ),
-            S.listItem()
-              .title('Market Analysis Report')
-              .id('marketAnalysisReport')
-              .schemaType('marketAnalysisReport')
-              .child(
-                S.document().schemaType('marketAnalysisReport').documentId('marketAnalysisReport'),
-              ),
-            S.divider(),
-            S.listItem()
-              .title('Site Settings')
-              .id('siteSettings')
-              .schemaType('siteSettings')
-              .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
-            S.divider(),
-            S.listItem()
-              .title('Sections')
-              .id('sections')
+              .title('Pages')
+              .id('pages')
               .child(
                 S.list()
-                  .title('Sections')
+                  .title('Pages')
                   .items([
-                    S.documentTypeListItem('heroSection').title('Hero'),
+                    S.listItem()
+                      .title('Home Page')
+                      .id('homePage')
+                      .schemaType('homePage')
+                      .child(S.document().schemaType('homePage').documentId('homePage')),
+                    S.listItem()
+                      .title('Certified Organic Page')
+                      .id('certifiedOrganicPage')
+                      .schemaType('certifiedOrganicPage')
+                      .child(
+                        S.document()
+                          .schemaType('certifiedOrganicPage')
+                          .documentId('certifiedOrganicPage'),
+                      ),
+                    S.listItem()
+                      .title('Private Label Page')
+                      .id('privateLabelPage')
+                      .schemaType('privateLabelPage')
+                      .child(
+                        S.document().schemaType('privateLabelPage').documentId('privateLabelPage'),
+                      ),
+                    S.listItem()
+                      .title('Market Analysis Report')
+                      .id('marketAnalysisReport')
+                      .schemaType('marketAnalysisReport')
+                      .child(
+                        S.document()
+                          .schemaType('marketAnalysisReport')
+                          .documentId('marketAnalysisReport'),
+                      ),
+                  ]),
+              ),
+            S.listItem()
+              .title('Section Library')
+              .id('sectionLibrary')
+              .child(
+                S.list()
+                  .title('Section Library')
+                  .items([
+                    S.documentTypeListItem('marketReportBannerSection').title(
+                      'Market Report Banners',
+                    ),
+                    S.documentTypeListItem('heroSection').title('Heroes'),
+                    S.documentTypeListItem('certificationSection').title('Certification Sections'),
+                    S.documentTypeListItem('ingredientCapabilitiesSection').title(
+                      'Ingredient Capabilities',
+                    ),
+                    S.documentTypeListItem('capabilitySection').title('Capability Sections'),
+                    S.documentTypeListItem('certifiedOrganicSection').title(
+                      'Certified Organic Sections',
+                    ),
+                    S.documentTypeListItem('privateLabelSection').title('Private Label Sections'),
+                    S.documentTypeListItem('industriesSection').title('Industries Sections'),
+                    S.documentTypeListItem('popularIngredientsSection').title(
+                      'Popular Ingredients',
+                    ),
+                    S.documentTypeListItem('premiumIngredientsSection').title(
+                      'Premium Ingredients Sections',
+                    ),
+                    S.documentTypeListItem('testimonialsSection').title('Testimonials Sections'),
+                    S.documentTypeListItem('finalCtaSection').title('Final CTAs'),
                   ]),
               ),
             S.divider(),
-            S.documentTypeListItem('ingredientCategory').title('Ingredient Categories'),
-            S.documentTypeListItem('testimonial').title('Testimonials'),
+            S.documentTypeListItem('ingredientCategory').title('Ingredients'),
             S.documentTypeListItem('blogPost').title('Blog Posts'),
+            S.documentTypeListItem('testimonial').title('Testimonials'),
+            S.divider(),
+            S.listItem()
+              .title('Settings')
+              .id('settings')
+              .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
           ]),
     }),
     presentationTool({
@@ -120,9 +152,9 @@ export default defineConfig({
             }),
           }),
           blogPost: defineLocations({
-            select: { title: 'title', slug: 'slug.current' },
+            select: {title: 'title', slug: 'slug.current'},
             resolve: (doc) => ({
-              locations: [{ title: doc?.title ?? 'Blog Post', href: `/blog/${doc?.slug}` }],
+              locations: [{title: doc?.title ?? 'Blog Post', href: `/blog/${doc?.slug}`}],
             }),
           }),
         },
