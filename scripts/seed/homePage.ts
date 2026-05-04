@@ -58,15 +58,15 @@ export async function seedHomePage(): Promise<void> {
     _id: 'heroSection-default',
     _type: 'heroSection',
     title: 'Home / Default',
-    headline: 'Global Supplier of 500+ Health and Wellness Ingredients',
+    headline: 'Global Leaders in Certified Organic & Functional Ingredients',
     subheading:
-      'Certified organic, botanical and functional ingredients supplied to food manufacturers, nutraceutical brands and product developers worldwide.',
+      'Partnering with food, nutraceutical, and wellness brands to deliver high-quality ingredients and end-to-end solutions — from global sourcing to private label manufacturing and scalable supply.',
     primaryCta: staticCta('Browse Ingredients', '/ingredients'),
-    secondaryCta: staticCta('Request Quote', '/contact'),
+    secondaryCta: staticCta('Speak to Our Team', '/contact'),
     trustBullets: [
+      'Botanicals, Extracts & Functional Ingredients',
       'Certified Organic Supply Chains',
-      'Global Ingredient Sourcing',
-      'Private Label Solutions',
+      'Global Sourcing Network',
     ],
     ...(heroBackground ? {backgroundImage: heroBackground} : {}),
   })
