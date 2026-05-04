@@ -1,0 +1,54 @@
+name: Deploy Sanity Studio
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sanity-studio-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Studio
+    runs-on: ubuntu-latest
+
+    env:
+      SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+      SANITY_STUDIO_PROJECT_ID: ${{ vars.SANITY_STUDIO_PROJECT_ID }}
+      SANITY_STUDIO_DATASET: ${{ vars.SANITY_STUDIO_DATASET }}
+      SANITY_STUDIO_PREVIEW_URL: ${{ vars.SANITY_STUDIO_PREVIEW_URL }}
+      SANITY_STUDIO_PREVIEW_SECRET: ${{ secrets.SANITY_STUDIO_PREVIEW_SECRET }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify Sanity deployment config
+        shell: bash
+        run: |
+          test -n "$SANITY_AUTH_TOKEN" || (echo "Missing SANITY_AUTH_TOKEN secret" && exit 1)
+          test -n "$SANITY_STUDIO_PROJECT_ID" || (echo "Missing SANITY_STUDIO_PROJECT_ID repository variable" && exit 1)
+          test -n "$SANITY_STUDIO_DATASET" || (echo "Missing SANITY_STUDIO_DATASET repository variable" && exit 1)
+
+      - name: Deploy Sanity Studio
+        run: pnpm exec sanity deploy --url switch-supply --yes
