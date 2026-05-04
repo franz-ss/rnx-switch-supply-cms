@@ -65,27 +65,27 @@ export default defineConfig({
                   .title('Section Library')
                   .items([
                     S.documentTypeListItem('marketReportBannerSection').title(
-                      'Market Report Banners',
+                      'Market Report Banner',
                     ),
-                    S.documentTypeListItem('heroSection').title('Heroes'),
-                    S.documentTypeListItem('certificationSection').title('Certification Sections'),
+                    S.documentTypeListItem('heroSection').title('Hero'),
+                    S.documentTypeListItem('certificationSection').title('Certification Section'),
                     S.documentTypeListItem('ingredientCapabilitiesSection').title(
-                      'Ingredient Capabilities',
+                      'Ingredient Capabilities Section',
                     ),
-                    S.documentTypeListItem('capabilitySection').title('Capability Sections'),
+                    S.documentTypeListItem('capabilitySection').title('Capability Section'),
                     S.documentTypeListItem('certifiedOrganicSection').title(
-                      'Certified Organic Sections',
+                      'Certified Organic Section',
                     ),
-                    S.documentTypeListItem('privateLabelSection').title('Private Label Sections'),
-                    S.documentTypeListItem('industriesSection').title('Industries Sections'),
+                    S.documentTypeListItem('privateLabelSection').title('Private Label Section'),
+                    S.documentTypeListItem('industriesSection').title('Industries Section'),
                     S.documentTypeListItem('popularIngredientsSection').title(
-                      'Popular Ingredients',
+                      'Popular Ingredients Section',
                     ),
                     S.documentTypeListItem('premiumIngredientsSection').title(
-                      'Premium Ingredients Sections',
+                      'Premium Ingredients Section',
                     ),
-                    S.documentTypeListItem('testimonialsSection').title('Testimonials Sections'),
-                    S.documentTypeListItem('finalCtaSection').title('Final CTAs'),
+                    S.documentTypeListItem('testimonialsSection').title('Testimonials Section'),
+                    S.documentTypeListItem('finalCtaSection').title('Final CTA'),
                   ]),
               ),
             S.divider(),
