@@ -322,11 +322,11 @@ export const privateLabelPage = defineType({
       ],
     }),
 
-    // ─── Testimonials Section ─────────────────────────────────────────────────
+    // ─── Testimonials ─────────────────────────────────────────────────
     // Heading/subheading only — testimonial documents are queried separately
     defineField({
       name: 'testimonialsSection',
-      title: 'Testimonials Section',
+      title: 'Testimonials',
       type: 'object',
       fields: [
         defineField({name: 'heading', title: 'Heading', type: 'string'}),

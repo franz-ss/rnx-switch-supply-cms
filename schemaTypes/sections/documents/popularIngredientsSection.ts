@@ -3,7 +3,7 @@ import {ctaField} from '../../objects/cta'
 
 export const popularIngredientsSection = defineType({
   name: 'popularIngredientsSection',
-  title: 'Popular Ingredients',
+  title: 'Popular Ingredient',
   type: 'document',
   fields: [
     defineField({
@@ -21,8 +21,18 @@ export const popularIngredientsSection = defineType({
       of: [{type: 'reference', to: [{type: 'ingredientCategory'}]}],
     }),
     ctaField('catalogueCta', 'Catalogue CTA'),
-    defineField({name: 'trendingLabel', type: 'string'}),
-    defineField({name: 'viewSpecsLabel', type: 'string'}),
+    defineField({
+      name: 'trendingLabel',
+      title: 'Trending Label',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'viewSpecsLabel',
+      title: 'View Specs Label',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {select: {title: 'title', subtitle: 'heading'}},
 })

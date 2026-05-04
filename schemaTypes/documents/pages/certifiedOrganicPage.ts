@@ -80,7 +80,7 @@ export const certifiedOrganicPage = defineType({
     // ─── Product Range ────────────────────────────────────────────────────────
     defineField({
       name: 'productRange',
-      title: 'Product Range Section',
+      title: 'Product Range',
       type: 'object',
       fields: [
         defineField({name: 'heading', title: 'Heading', type: 'string'}),
@@ -236,7 +236,7 @@ export const certifiedOrganicPage = defineType({
     // ─── Supply Chain ─────────────────────────────────────────────────────────
     defineField({
       name: 'supplyChain',
-      title: 'Global Supply Chain Section',
+      title: 'Global Supply Chain',
       type: 'object',
       fields: [
         defineField({name: 'heading', title: 'Heading', type: 'string'}),
@@ -297,10 +297,10 @@ export const certifiedOrganicPage = defineType({
       ],
     }),
 
-    // ─── Trust Section ────────────────────────────────────────────────────────
+    // ─── Trust ────────────────────────────────────────────────────────
     defineField({
       name: 'trustSection',
-      title: 'Trust Section',
+      title: 'Trust',
       type: 'object',
       fields: [
         defineField({name: 'heading', title: 'Heading', type: 'string'}),

@@ -317,6 +317,8 @@ export async function seedHomePage(): Promise<void> {
       title: 'Home / Trending Ingredients',
       heading: 'Trending Ingredients',
       catalogueCta: staticCta('View Top 20 Trending Products', '/ingredients'),
+      trendingLabel: 'Trending',
+      viewSpecsLabel: 'View specs',
       ingredients: [
         {_type: 'reference', _ref: 'ingredientCategory-certified-organic', _key: 'ing-0'},
         {_type: 'reference', _ref: 'ingredientCategory-herbs-botanicals-spices', _key: 'ing-1'},

@@ -3,7 +3,7 @@ import {iconField} from '../../objects/icon'
 
 export const capabilitySection = defineType({
   name: 'capabilitySection',
-  title: 'Capability Section',
+  title: 'Capability',
   type: 'document',
   fields: [
     defineField({

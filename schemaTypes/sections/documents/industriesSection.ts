@@ -3,7 +3,7 @@ import {iconField} from '../../objects/icon'
 
 export const industriesSection = defineType({
   name: 'industriesSection',
-  title: 'Industries Section',
+  title: 'Industry',
   type: 'document',
   fields: [
     defineField({

@@ -5,7 +5,7 @@ import {imageWithAlt} from '../../objects/imageWithAlt'
 
 export const certifiedOrganicSection = defineType({
   name: 'certifiedOrganicSection',
-  title: 'Certified Organic Section',
+  title: 'Certified Organic',
   type: 'document',
   fields: [
     defineField({
@@ -31,7 +31,7 @@ export const certifiedOrganicSection = defineType({
         },
       ],
     }),
-    defineField({name: 'label', type: 'string'}),
+    defineField({name: 'label', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({name: 'heading', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({name: 'description', type: 'text'}),
     ctaField('cta', 'CTA'),

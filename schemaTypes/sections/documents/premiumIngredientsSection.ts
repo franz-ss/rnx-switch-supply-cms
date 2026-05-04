@@ -5,7 +5,7 @@ import {imageWithAlt} from '../../objects/imageWithAlt'
 
 export const premiumIngredientsSection = defineType({
   name: 'premiumIngredientsSection',
-  title: 'Premium Ingredients Section',
+  title: 'Premium Ingredient',
   type: 'document',
   fields: [
     defineField({

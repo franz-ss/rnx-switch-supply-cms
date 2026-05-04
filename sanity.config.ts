@@ -64,28 +64,18 @@ export default defineConfig({
                 S.list()
                   .title('Section Library')
                   .items([
-                    S.documentTypeListItem('marketReportBannerSection').title(
-                      'Market Report Banner',
-                    ),
-                    S.documentTypeListItem('heroSection').title('Hero'),
-                    S.documentTypeListItem('certificationSection').title('Certification Section'),
-                    S.documentTypeListItem('ingredientCapabilitiesSection').title(
-                      'Ingredient Capabilities Section',
-                    ),
-                    S.documentTypeListItem('capabilitySection').title('Capability Section'),
-                    S.documentTypeListItem('certifiedOrganicSection').title(
-                      'Certified Organic Section',
-                    ),
-                    S.documentTypeListItem('privateLabelSection').title('Private Label Section'),
-                    S.documentTypeListItem('industriesSection').title('Industries Section'),
-                    S.documentTypeListItem('popularIngredientsSection').title(
-                      'Popular Ingredients Section',
-                    ),
-                    S.documentTypeListItem('premiumIngredientsSection').title(
-                      'Premium Ingredients Section',
-                    ),
-                    S.documentTypeListItem('testimonialsSection').title('Testimonials Section'),
-                    S.documentTypeListItem('finalCtaSection').title('Final CTA'),
+                    S.documentTypeListItem('marketReportBannerSection'),
+                    S.documentTypeListItem('heroSection'),
+                    S.documentTypeListItem('certificationSection'),
+                    S.documentTypeListItem('ingredientCapabilitiesSection'),
+                    S.documentTypeListItem('capabilitySection'),
+                    S.documentTypeListItem('certifiedOrganicSection'),
+                    S.documentTypeListItem('privateLabelSection'),
+                    S.documentTypeListItem('industriesSection'),
+                    S.documentTypeListItem('popularIngredientsSection'),
+                    S.documentTypeListItem('premiumIngredientsSection'),
+                    S.documentTypeListItem('testimonialsSection'),
+                    S.documentTypeListItem('finalCtaSection'),
                   ]),
               ),
             S.divider(),

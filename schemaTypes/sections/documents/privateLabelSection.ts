@@ -4,7 +4,7 @@ import {imageWithAlt} from '../../objects/imageWithAlt'
 
 export const privateLabelSection = defineType({
   name: 'privateLabelSection',
-  title: 'Private Label Section',
+  title: 'Private Label',
   type: 'document',
   fields: [
     defineField({
@@ -16,7 +16,7 @@ export const privateLabelSection = defineType({
     }),
     defineField({name: 'heading', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({name: 'description', type: 'text'}),
-    defineField({name: 'moqLabel', type: 'string'}),
+    defineField({name: 'moqLabel', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({name: 'moqValue', type: 'string'}),
     defineField({name: 'capabilitiesHeading', type: 'string'}),
     defineField({name: 'capabilities', type: 'array', of: [{type: 'string'}]}),

@@ -3,7 +3,7 @@ import {imageWithAlt} from '../../objects/imageWithAlt'
 
 export const certificationSection = defineType({
   name: 'certificationSection',
-  title: 'Certification Section',
+  title: 'Certification',
   type: 'document',
   fields: [
     defineField({

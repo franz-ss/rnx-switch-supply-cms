@@ -4,7 +4,7 @@ import {linkField} from '../../objects/link'
 
 export const ingredientCapabilitiesSection = defineType({
   name: 'ingredientCapabilitiesSection',
-  title: 'Ingredient Capabilities',
+  title: 'Ingredient Capability',
   type: 'document',
   fields: [
     defineField({
@@ -15,7 +15,12 @@ export const ingredientCapabilitiesSection = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({name: 'heading', title: 'Heading', type: 'string'}),
-    defineField({name: 'browseLabel', title: 'Browse Label', type: 'string'}),
+    defineField({
+      name: 'browseLabel',
+      title: 'Browse Label',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'categories',
       title: 'Categories',
