@@ -59,7 +59,7 @@ function number(...children: ReturnType<typeof span>[]) {
 }
 
 const img = (ref: ImageRef, alt: string) =>
-  ref ? { _type: "image" as const, _key: k(), asset: ref, alt } : null;
+  ref ? { _type: "image" as const, _key: k(), asset: ref.asset, alt } : null;
 
 // ── Post content ─────────────────────────────────────────────────────────────
 
