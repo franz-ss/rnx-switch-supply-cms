@@ -50,4 +50,4 @@ jobs:
           test -n "$SANITY_STUDIO_DATASET" || (echo "Missing SANITY_STUDIO_DATASET repository variable" && exit 1)
 
       - name: Deploy Sanity Studio
-        run: pnpm exec sanity deploy --url switch-supply --yes
+        run: pnpm exec sanity deploy --url switchsupply --yes
