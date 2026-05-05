@@ -22,11 +22,17 @@ export const homePage = defineType({
   type: 'document',
   icon: Home,
   fields: [
-    defineField({name: 'title', title: 'Internal Title', type: 'string'}),
+    defineField({
+      name: 'title',
+      title: 'Internal Title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'sections',
       title: 'Page Sections',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [{type: 'reference', to: sectionReferenceTypes}],
     }),
   ],

@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {ctaField} from '../../objects/cta'
 import {imageWithAlt} from '../../objects/imageWithAlt'
 
 export const heroSection = defineType({
@@ -20,13 +19,29 @@ export const heroSection = defineType({
       type: 'string',
       validation: (R) => R.required(),
     }),
-    defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
-    ctaField('primaryCta', 'Primary CTA'),
-    ctaField('secondaryCta', 'Secondary CTA'),
+    defineField({
+      name: 'subheading',
+      title: 'Subheading',
+      type: 'text',
+      validation: (R) => R.required(),
+    }),
+    defineField({
+      name: 'primaryCta',
+      title: 'Primary CTA',
+      type: 'cta',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'secondaryCta',
+      title: 'Secondary CTA',
+      type: 'cta',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'trustBullets',
       title: 'Trust Bullets',
       type: 'array',
+      validation: (R) => R.required().min(1),
       of: [{type: 'string'}],
     }),
     imageWithAlt('backgroundImage', 'Background Image'),

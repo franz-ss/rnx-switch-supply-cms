@@ -157,10 +157,3 @@ export const link = defineType({
     }),
   },
 })
-
-export const linkField = (name: string, title: string) =>
-  defineField({
-    name,
-    title,
-    type: 'link',
-  })

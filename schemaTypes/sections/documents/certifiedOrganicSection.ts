@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {ctaField} from '../../objects/cta'
 import {iconField} from '../../objects/icon'
 import {imageWithAlt} from '../../objects/imageWithAlt'
 
@@ -19,13 +18,14 @@ export const certifiedOrganicSection = defineType({
       name: 'features',
       title: 'Features',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',
           fields: [
             iconField(),
             defineField({name: 'title', type: 'string', validation: (Rule) => Rule.required()}),
-            defineField({name: 'description', type: 'text'}),
+            defineField({name: 'description', type: 'text', validation: (Rule) => Rule.required()}),
           ],
           preview: {select: {title: 'title'}},
         },
@@ -33,28 +33,39 @@ export const certifiedOrganicSection = defineType({
     }),
     defineField({name: 'label', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({name: 'heading', type: 'string', validation: (Rule) => Rule.required()}),
-    defineField({name: 'description', type: 'text'}),
-    ctaField('cta', 'CTA'),
+    defineField({name: 'description', type: 'text', validation: (Rule) => Rule.required()}),
+    defineField({
+      name: 'cta',
+      title: 'CTA',
+      type: 'cta',
+      validation: (Rule) => Rule.required(),
+    }),
     imageWithAlt('supplyChainImage', 'Supply Chain Image'),
-    defineField({name: 'organicHeading', type: 'string'}),
-    defineField({name: 'organicDescription', type: 'text'}),
+    defineField({name: 'organicHeading', type: 'string', validation: (Rule) => Rule.required()}),
+    defineField({name: 'organicDescription', type: 'text', validation: (Rule) => Rule.required()}),
     defineField({
       name: 'organicCertifications',
       title: 'Organic Certifications',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',
           fields: [
             imageWithAlt('logo', 'Logo'),
             defineField({name: 'name', type: 'string', validation: (Rule) => Rule.required()}),
-            defineField({name: 'description', type: 'text'}),
+            defineField({name: 'description', type: 'text', validation: (Rule) => Rule.required()}),
           ],
           preview: {select: {title: 'name'}},
         },
       ],
     }),
-    ctaField('certificationsCta', 'Certifications CTA'),
+    defineField({
+      name: 'certificationsCta',
+      title: 'Certifications CTA',
+      type: 'cta',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {select: {title: 'title', subtitle: 'heading'}},
 })

@@ -5,4 +5,5 @@ export const iconField = (name = 'icon', title = 'Icon') =>
     name,
     title,
     type: 'iconPicker',
+    validation: (Rule) => Rule.required(),
   })

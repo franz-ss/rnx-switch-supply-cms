@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {ctaField} from '../../objects/cta'
 import {iconField} from '../../objects/icon'
 import {imageWithAlt} from '../../objects/imageWithAlt'
 
@@ -15,20 +14,21 @@ export const premiumIngredientsSection = defineType({
       description: 'Editor-only label. Not shown on the website.',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({name: 'label', type: 'string'}),
+    defineField({name: 'label', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({name: 'heading', type: 'string', validation: (Rule) => Rule.required()}),
-    defineField({name: 'description', type: 'text'}),
+    defineField({name: 'description', type: 'text', validation: (Rule) => Rule.required()}),
     defineField({
       name: 'features',
       title: 'Features',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',
           fields: [
             iconField(),
             defineField({name: 'title', type: 'string', validation: (Rule) => Rule.required()}),
-            defineField({name: 'description', type: 'text'}),
+            defineField({name: 'description', type: 'text', validation: (Rule) => Rule.required()}),
           ],
           preview: {select: {title: 'title'}},
         },
@@ -36,7 +36,12 @@ export const premiumIngredientsSection = defineType({
     }),
     imageWithAlt('imageOne', 'Image 1'),
     imageWithAlt('imageTwo', 'Image 2'),
-    ctaField('cta', 'CTA'),
+    defineField({
+      name: 'cta',
+      title: 'CTA',
+      type: 'cta',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {select: {title: 'title', subtitle: 'heading'}},
 })

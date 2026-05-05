@@ -25,6 +25,7 @@ export const ingredientCategory = defineType({
       title: 'Tagline',
       type: 'string',
       description: 'Short phrase used in SEO and page eyebrow text',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
@@ -51,6 +52,7 @@ export const ingredientCategory = defineType({
       name: 'featuredIngredients',
       title: 'Featured Ingredients',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',
@@ -76,19 +78,20 @@ export const ingredientCategory = defineType({
       name: 'applications',
       title: 'Common Applications',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [{type: 'string'}],
     }),
     defineField({
       name: 'seoTitle',
       title: 'SEO Title',
       type: 'string',
-      validation: (Rule) => Rule.max(70),
+      validation: (Rule) => Rule.required().max(70),
     }),
     defineField({
       name: 'seoDescription',
       title: 'SEO Description',
       type: 'text',
-      validation: (Rule) => Rule.max(160),
+      validation: (Rule) => Rule.required().max(160),
     }),
   ],
   preview: {

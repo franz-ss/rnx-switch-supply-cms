@@ -1,7 +1,6 @@
 // schemaTypes/privateLabelPage.ts
 import {defineField, defineType} from 'sanity'
 import {Tag} from 'lucide-react'
-import {ctaField} from '../../objects/cta'
 import {imageWithAlt} from '../../objects/imageWithAlt'
 
 export const privateLabelPage = defineType({
@@ -10,18 +9,23 @@ export const privateLabelPage = defineType({
   type: 'document',
   icon: Tag,
   fields: [
-    defineField({name: 'title', title: 'Internal Title', type: 'string'}),
+    defineField({
+      name: 'title',
+      title: 'Internal Title',
+      type: 'string',
+      validation: (R) => R.required(),
+    }),
     defineField({
       name: 'seoTitle',
       title: 'SEO Title',
       type: 'string',
-      validation: (R) => R.max(70),
+      validation: (R) => R.required().max(70),
     }),
     defineField({
       name: 'seoDescription',
       title: 'SEO Description',
       type: 'text',
-      validation: (R) => R.max(160),
+      validation: (R) => R.required().max(160),
     }),
 
     // ─── Hero ─────────────────────────────────────────────────────────────────
@@ -29,14 +33,31 @@ export const privateLabelPage = defineType({
       name: 'hero',
       title: 'Hero',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
-        ctaField('cta', 'CTA Button'),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'cta',
+          title: 'CTA Button',
+          type: 'cta',
+          validation: (Rule) => Rule.required(),
+        }),
         defineField({
           name: 'bullets',
           title: 'Bullet Points',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [{type: 'string'}],
         }),
         imageWithAlt('backgroundImage', 'Background Image'),
@@ -44,6 +65,7 @@ export const privateLabelPage = defineType({
           name: 'galleryImages',
           title: 'Gallery Images',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [
             {
               type: 'object',
@@ -60,22 +82,50 @@ export const privateLabelPage = defineType({
       name: 'globalIngredients',
       title: 'Global Ingredients',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'eyebrow', title: 'Eyebrow', type: 'string'}),
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
-        defineField({name: 'offerLabel', title: 'Offer Label', type: 'string'}),
+        defineField({
+          name: 'eyebrow',
+          title: 'Eyebrow',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'offerLabel',
+          title: 'Offer Label',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
         defineField({
           name: 'offerItems',
           title: 'Offer Items',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [{type: 'string'}],
         }),
-        defineField({name: 'footerText', title: 'Footer Text', type: 'string'}),
+        defineField({
+          name: 'footerText',
+          title: 'Footer Text',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
         defineField({
           name: 'images',
           title: 'Images',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [
             {
               type: 'object',
@@ -88,7 +138,13 @@ export const privateLabelPage = defineType({
                   type: 'string',
                   validation: (R) => R.required(),
                 }),
-                defineField({name: 'wide', title: 'Wide', type: 'boolean'}),
+                defineField({
+                  name: 'wide',
+                  title: 'Wide',
+                  type: 'boolean',
+                  initialValue: false,
+                  validation: (R) => R.required(),
+                }),
               ],
             },
           ],
@@ -101,13 +157,25 @@ export const privateLabelPage = defineType({
       name: 'topProducts',
       title: 'Top Products',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
         defineField({
           name: 'products',
           title: 'Products',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [
             {
               type: 'object',
@@ -120,11 +188,17 @@ export const privateLabelPage = defineType({
                   type: 'string',
                   validation: (R) => R.required(),
                 }),
-                defineField({name: 'description', title: 'Description', type: 'text'}),
+                defineField({
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                  validation: (R) => R.required(),
+                }),
                 defineField({
                   name: 'badges',
                   title: 'Badges',
                   type: 'array',
+                  validation: (R) => R.required().min(1),
                   of: [{type: 'string'}],
                 }),
               ],
@@ -139,13 +213,25 @@ export const privateLabelPage = defineType({
       name: 'npd',
       title: 'New Product Development',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
         defineField({
           name: 'cards',
           title: 'Cards',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [
             {
               type: 'object',
@@ -158,8 +244,18 @@ export const privateLabelPage = defineType({
                   type: 'string',
                   validation: (R) => R.required(),
                 }),
-                defineField({name: 'description', title: 'Description', type: 'text'}),
-                ctaField('cta', 'CTA Button'),
+                defineField({
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                  validation: (R) => R.required(),
+                }),
+                defineField({
+                  name: 'cta',
+                  title: 'CTA Button',
+                  type: 'cta',
+                  validation: (Rule) => Rule.required(),
+                }),
               ],
             },
           ],
@@ -172,13 +268,25 @@ export const privateLabelPage = defineType({
       name: 'packagingFormats',
       title: 'Packaging Formats',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
         defineField({
           name: 'tabs',
           title: 'Tabs',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [
             {
               type: 'object',
@@ -194,6 +302,7 @@ export const privateLabelPage = defineType({
                   name: 'images',
                   title: 'Images',
                   type: 'array',
+                  validation: (R) => R.required().min(1),
                   of: [
                     {
                       type: 'object',
@@ -222,15 +331,32 @@ export const privateLabelPage = defineType({
       name: 'sustainablePackaging',
       title: 'Sustainable Packaging',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'eyebrow', title: 'Eyebrow', type: 'string'}),
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
+        defineField({
+          name: 'eyebrow',
+          title: 'Eyebrow',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
         imageWithAlt('image', 'Image'),
         defineField({
           name: 'items',
           title: 'Benefit Items',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [{type: 'string'}],
         }),
       ],
@@ -241,10 +367,26 @@ export const privateLabelPage = defineType({
       name: 'midCta',
       title: 'Mid CTA',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
-        ctaField('cta', 'CTA Button'),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'cta',
+          title: 'CTA Button',
+          type: 'cta',
+          validation: (Rule) => Rule.required(),
+        }),
       ],
     }),
 
@@ -253,16 +395,33 @@ export const privateLabelPage = defineType({
       name: 'trending',
       title: "What's Trending",
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
         defineField({
           name: 'featuredPost',
           title: 'Featured Post',
           type: 'object',
+          validation: (R) => R.required(),
           fields: [
             imageWithAlt('image', 'Image'),
-            defineField({name: 'category', title: 'Category', type: 'string'}),
+            defineField({
+              name: 'category',
+              title: 'Category',
+              type: 'string',
+              validation: (R) => R.required(),
+            }),
             defineField({
               name: 'categoryColor',
               title: 'Category Badge Color',
@@ -274,6 +433,7 @@ export const privateLabelPage = defineType({
                   {title: 'Cream', value: 'cream'},
                 ],
               },
+              validation: (R) => R.required(),
             }),
             defineField({
               name: 'title',
@@ -281,20 +441,36 @@ export const privateLabelPage = defineType({
               type: 'string',
               validation: (R) => R.required(),
             }),
-            defineField({name: 'excerpt', title: 'Excerpt', type: 'text'}),
-            ctaField('cta', 'CTA Button'),
+            defineField({
+              name: 'excerpt',
+              title: 'Excerpt',
+              type: 'text',
+              validation: (R) => R.required(),
+            }),
+            defineField({
+              name: 'cta',
+              title: 'CTA Button',
+              type: 'cta',
+              validation: (Rule) => Rule.required(),
+            }),
           ],
         }),
         defineField({
           name: 'posts',
           title: 'Side Posts',
           type: 'array',
+          validation: (R) => R.required().min(1),
           of: [
             {
               type: 'object',
               preview: {select: {title: 'title'}},
               fields: [
-                defineField({name: 'category', title: 'Category', type: 'string'}),
+                defineField({
+                  name: 'category',
+                  title: 'Category',
+                  type: 'string',
+                  validation: (R) => R.required(),
+                }),
                 defineField({
                   name: 'categoryColor',
                   title: 'Category Badge Color',
@@ -306,6 +482,7 @@ export const privateLabelPage = defineType({
                       {title: 'Cream', value: 'cream'},
                     ],
                   },
+                  validation: (R) => R.required(),
                 }),
                 defineField({
                   name: 'title',
@@ -313,8 +490,18 @@ export const privateLabelPage = defineType({
                   type: 'string',
                   validation: (R) => R.required(),
                 }),
-                defineField({name: 'excerpt', title: 'Excerpt', type: 'text'}),
-                ctaField('cta', 'CTA Button'),
+                defineField({
+                  name: 'excerpt',
+                  title: 'Excerpt',
+                  type: 'text',
+                  validation: (R) => R.required(),
+                }),
+                defineField({
+                  name: 'cta',
+                  title: 'CTA Button',
+                  type: 'cta',
+                  validation: (Rule) => Rule.required(),
+                }),
               ],
             },
           ],
@@ -328,9 +515,20 @@ export const privateLabelPage = defineType({
       name: 'testimonialsSection',
       title: 'Testimonials',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
       ],
     }),
 
@@ -339,10 +537,26 @@ export const privateLabelPage = defineType({
       name: 'finalCta',
       title: 'Final CTA',
       type: 'object',
+      validation: (R) => R.required(),
       fields: [
-        defineField({name: 'heading', title: 'Heading', type: 'string'}),
-        defineField({name: 'subheading', title: 'Subheading', type: 'text'}),
-        ctaField('cta', 'CTA Button'),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'subheading',
+          title: 'Subheading',
+          type: 'text',
+          validation: (R) => R.required(),
+        }),
+        defineField({
+          name: 'cta',
+          title: 'CTA Button',
+          type: 'cta',
+          validation: (Rule) => Rule.required(),
+        }),
         imageWithAlt('backgroundImage', 'Background Image'),
       ],
     }),

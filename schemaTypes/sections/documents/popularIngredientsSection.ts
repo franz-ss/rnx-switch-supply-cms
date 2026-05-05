@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {ctaField} from '../../objects/cta'
 
 export const popularIngredientsSection = defineType({
   name: 'popularIngredientsSection',
@@ -13,14 +12,20 @@ export const popularIngredientsSection = defineType({
       description: 'Editor-only label. Not shown on the website.',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({name: 'heading', type: 'string'}),
+    defineField({name: 'heading', type: 'string', validation: (Rule) => Rule.required()}),
     defineField({
       name: 'ingredients',
       title: 'Ingredients',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [{type: 'reference', to: [{type: 'ingredientCategory'}]}],
     }),
-    ctaField('catalogueCta', 'Catalogue CTA'),
+    defineField({
+      name: 'catalogueCta',
+      title: 'Catalogue CTA',
+      type: 'cta',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'trendingLabel',
       title: 'Trending Label',

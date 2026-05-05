@@ -21,8 +21,18 @@ export const blogPost = defineType({
       options: {source: 'title'},
       validation: (R) => R.required(),
     }),
-    defineField({name: 'author', title: 'Author', type: 'string'}),
-    defineField({name: 'category', title: 'Category', type: 'string'}),
+    defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'string',
+      validation: (R) => R.required(),
+    }),
+    defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      validation: (R) => R.required(),
+    }),
     defineField({
       name: 'categoryColor',
       title: 'Category Color',
@@ -37,18 +47,27 @@ export const blogPost = defineType({
           {title: 'Purple', value: 'purple'},
         ],
       },
+      validation: (R) => R.required(),
     }),
-    defineField({name: 'excerpt', title: 'Excerpt', type: 'text', rows: 3}),
+    defineField({
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+      rows: 3,
+      validation: (R) => R.required(),
+    }),
     defineField({
       name: 'publishedAt',
       title: 'Published At',
       type: 'datetime',
+      validation: (R) => R.required(),
     }),
     imageWithAlt('heroImage', 'Hero Image'),
     defineField({
       name: 'content',
       title: 'Content',
       type: 'array',
+      validation: (R) => R.required().min(1),
       of: [
         {
           type: 'block',
@@ -67,7 +86,15 @@ export const blogPost = defineType({
                 name: 'link',
                 title: 'Link',
                 type: 'object',
-                fields: [defineField({name: 'href', title: 'URL', type: 'url'})],
+                validation: (R) => R.required(),
+                fields: [
+                  defineField({
+                    name: 'href',
+                    title: 'URL',
+                    type: 'url',
+                    validation: (R) => R.required(),
+                  }),
+                ],
               }),
             ],
           },
@@ -75,7 +102,14 @@ export const blogPost = defineType({
         {
           type: 'image',
           options: {hotspot: true},
-          fields: [defineField({name: 'alt', title: 'Alt Text', type: 'string'})],
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              validation: (R) => R.required(),
+            }),
+          ],
         },
       ],
     }),
@@ -83,6 +117,7 @@ export const blogPost = defineType({
       name: 'citations',
       title: 'Citations',
       type: 'array',
+      validation: (R) => R.required().min(1),
       of: [
         {
           type: 'object',
@@ -94,7 +129,7 @@ export const blogPost = defineType({
               type: 'string',
               validation: (R) => R.required(),
             }),
-            defineField({name: 'href', title: 'URL', type: 'url'}),
+            defineField({name: 'href', title: 'URL', type: 'url', validation: (R) => R.required()}),
           ],
         },
       ],

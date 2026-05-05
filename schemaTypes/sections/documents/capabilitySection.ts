@@ -13,11 +13,17 @@ export const capabilitySection = defineType({
       description: 'Editor-only label. Not shown on the website.',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({name: 'heading', title: 'Heading', type: 'string'}),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'stats',
       title: 'Stats',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',
@@ -29,8 +35,18 @@ export const capabilitySection = defineType({
               type: 'string',
               validation: (Rule) => Rule.required(),
             }),
-            defineField({name: 'label', title: 'Label', type: 'string'}),
-            defineField({name: 'sublabel', title: 'Sub-label', type: 'string'}),
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'sublabel',
+              title: 'Sub-label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
           ],
           preview: {select: {title: 'label'}},
         },

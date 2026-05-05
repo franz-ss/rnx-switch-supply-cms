@@ -48,9 +48,3 @@ export const cta = defineType({
   },
 })
 
-export const ctaField = (name: string, title: string) =>
-  defineField({
-    name,
-    title,
-    type: 'cta',
-  })

@@ -1,6 +1,5 @@
 import {defineField, defineType} from 'sanity'
 import {imageWithAlt} from '../../objects/imageWithAlt'
-import {linkField} from '../../objects/link'
 
 export const ingredientCapabilitiesSection = defineType({
   name: 'ingredientCapabilitiesSection',
@@ -14,7 +13,12 @@ export const ingredientCapabilitiesSection = defineType({
       description: 'Editor-only label. Not shown on the website.',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({name: 'heading', title: 'Heading', type: 'string'}),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'browseLabel',
       title: 'Browse Label',
@@ -25,13 +29,19 @@ export const ingredientCapabilitiesSection = defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',
           fields: [
             defineField({name: 'title', type: 'string', validation: (Rule) => Rule.required()}),
-            defineField({name: 'description', type: 'text'}),
-            linkField('link', 'Link'),
+            defineField({name: 'description', type: 'text', validation: (Rule) => Rule.required()}),
+            defineField({
+              name: 'link',
+              title: 'Link',
+              type: 'link',
+              validation: (Rule) => Rule.required(),
+            }),
             imageWithAlt('image', 'Image'),
           ],
           preview: {select: {title: 'title'}},

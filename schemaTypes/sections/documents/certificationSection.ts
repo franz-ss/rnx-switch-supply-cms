@@ -13,11 +13,17 @@ export const certificationSection = defineType({
       description: 'Editor-only label. Not shown on the website.',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({name: 'heading', title: 'Heading', type: 'string'}),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'certifications',
       title: 'Certifications',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [
         {
           type: 'object',

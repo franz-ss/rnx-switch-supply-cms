@@ -6,6 +6,7 @@ export const imageWithAlt = (name: string, title: string) =>
     title,
     type: 'image',
     options: {hotspot: true},
+    validation: (Rule) => Rule.required(),
     fields: [
       defineField({
         name: 'alt',

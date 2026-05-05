@@ -1,6 +1,5 @@
 import {defineField, defineType} from 'sanity'
 import {Settings} from 'lucide-react'
-import {linkField} from '../../objects/link'
 
 const navLinkType = {
   type: 'object' as const,
@@ -11,7 +10,12 @@ const navLinkType = {
       title: 'Label',
       validation: (Rule) => Rule.required(),
     }),
-    linkField('link', 'Link'),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'link',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {select: {title: 'label', subtitle: 'link.staticRoute'}},
 }
@@ -28,33 +32,62 @@ export const siteSettings = defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({name: 'tagline', title: 'Tagline', type: 'string'}),
-    defineField({name: 'phone', title: 'Phone', type: 'string'}),
-    linkField('phoneLink', 'Phone Link'),
-    defineField({name: 'email', title: 'Contact Email', type: 'string'}),
-    linkField('emailLink', 'Email Link'),
+    defineField({
+      name: 'tagline',
+      title: 'Tagline',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'phoneLink',
+      title: 'Phone Link',
+      type: 'link',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'email',
+      title: 'Contact Email',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'emailLink',
+      title: 'Email Link',
+      type: 'link',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'siteDescription',
       title: 'Site Description',
       type: 'text',
       description: 'Used in the footer',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'navLinks',
       title: 'Navigation Links',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [navLinkType],
     }),
     defineField({
       name: 'productLinks',
       title: 'Footer: Product Links',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [navLinkType],
     }),
     defineField({
       name: 'companyLinks',
       title: 'Footer: Company Links',
       type: 'array',
+      validation: (Rule) => Rule.required().min(1),
       of: [navLinkType],
     }),
   ],
