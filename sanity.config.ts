@@ -91,11 +91,16 @@ export default defineConfig({
     }),
     presentationTool({
       previewUrl: {
-        origin: process.env.SANITY_STUDIO_PREVIEW_URL ?? 'http://localhost:3000',
+        initial: process.env.SANITY_STUDIO_PREVIEW_URL ?? 'http://localhost:3000',
         previewMode: {
-          enable: `/api/draft-mode/enable?secret=${process.env.SANITY_STUDIO_PREVIEW_SECRET}`,
+          enable: '/api/draft-mode/enable',
+          disable: '/api/draft-mode/disable',
         },
       },
+      allowOrigins: [
+        'http://localhost:*',
+        ...(process.env.SANITY_STUDIO_PREVIEW_URL ? [process.env.SANITY_STUDIO_PREVIEW_URL] : []),
+      ],
       resolve: {
         locations: {
           homePage: defineLocations({
